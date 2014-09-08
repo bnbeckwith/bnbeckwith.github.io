@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Word-count Mode</title>
+
+  
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+  <![endif]-->
+
+
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+
+</head>
+
+<body>
+
+  <content>
+
+    <aside role="nav" class="nav">
+      <nav>
+        <h3 id="logo"><a id="sitename" href="/">bnbeckwith</a></h3>
+        <ul class="navbar-nav" id="navlinks">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/tags">Tags</a></li>
+          <li id=""><a href="/archive">Archive</a></li><li><a href="/code/">Code</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="content-wrapper">
+      <div id="page-header">
+        <h1 id="content-title">Word-count Mode</h1>
+      </div>
+      
+      <article id="content"><section id="root"><p>There is a fun little journal website called 
+<a href="http://750words.com">750words</a> that
+<!-- 
+ -->encourages writing at 750 words at a time.  I think the idea is great,
+but I do not want my writing in the cloud.  So, I created wc-mode.
+</p><p>It is a little mode that provides a word
+<em>line
+</em>character count in the
+<!-- 
+ -->modeline.  The mode captures the changes in the buffer and present
+them to you, the user.
+</p><p>Additionally, wc-mode lets you define goals for content and alerts you
+(via the modeline) when you reach that goal.
+</p><p></p><p></p><p></p><p></p><section class="hsec2"><h2>Installation</h2><p>To install, 
+<a href="http://github.com/bnbeckwith/wc-mode">grab it from Github</a> or use one of the following
+<!-- 
+ -->commands.
+</p><p></p><div class="highlight"><pre>&gt; git clone git://github.com/bnbeckwith/wc-mode.git
+&gt; git clone http://github.com/bnbeckwith/wc-mode.git
+</pre></div>
+<p>Use the following code to add it to emacs.
+</p><div class="highlight"><pre>  <span class="c1">;; Supply the path to the mode repository</span>
+  <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'load-path</span> <span class="s">&quot;location/of/wc-mode&quot;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">require</span> <span class="ss">'wc-mode</span><span class="p">)</span>
+  <span class="c1">;; (Optionally) setup a global key</span>
+  <span class="p">(</span><span class="nv">global-set-key</span> <span class="s">&quot;\C-cw&quot;</span> <span class="ss">'wc-mode</span><span class="p">)</span>
+</pre></div>
+<p>When you want to check your added words or set goals, turn on the
+mode with your global key.
+</p><p></p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>Usage</h2><p>There are two different ways to use this package.  First, you can use
+it as a minor mode (preferred method).  But, if you do not want the
+full power of a mode, you can just call the 
+<verbatim>wc-count</verbatim> function
+<!-- 
+ -->which will show a message of the current words, lines and characters
+in the current buffer.
+</p><p>The rest of this section focuses on the minor-mode usage.
+</p><p></p><p></p><p></p><section class="hsec3"><h3>Keystrokes</h3><p>After enabling 
+<verbatim>wc-mode</verbatim>, a small set of commands are available via
+<!-- 
+ -->the following keymap.
+</p><p></p><p></p><table><tbody><tr><th>Key
+</th><th>Function
+</th></tr><tr><td>C-c C-w w
+</td><td>Set word goal
+</td></tr><tr><td>C-c C-w l
+</td><td>Set line goal
+</td></tr><tr><td>C-c C-w a
+</td><td>Set character goal
+</td></tr><tr><td>C-c C-w c
+</td><td>Do a 'wc' on the buffer
+</td></tr></tbody></table><p>The first three keys set specific goals.  The modeline displayed
+will highlight when upon goal completion.  These goals are in
+relation to the delta of what is already on the page.  Because of
+that, you are free to set a negative goal -- useful for text that
+needs editing.
+</p><p>The final key just runs the 
+<verbatim>wc-count</verbatim> function to get a message in
+<!-- 
+ -->the mini-buffer.
+</p><p></p><p></p><p></p><p></p><p></p><p></p></section><section class="hsec3"><h3>Modeline</h3><p>The modeline format string, 
+<verbatim>wc-modeline-format</verbatim> describes how to
+<!-- 
+ -->display the pieces of data.  The following table defines the
+format-codes used.
+</p><p></p><table><tbody><tr><th>Format Code
+</th><th>What is displayed
+</th></tr><tr><td>%W
+</td><td>Original word count (before changes)
+</td></tr><tr><td>%L
+</td><td>Original line count
+</td></tr><tr><td>%C
+</td><td>Original character count
+</td></tr><tr><td>%w
+</td><td>Change in words
+</td></tr><tr><td>%l
+</td><td>Change in lines
+</td></tr><tr><td>%c
+</td><td>Change in characters
+</td></tr><tr><td>%gc
+</td><td>Character change goal
+</td></tr><tr><td>%gl
+</td><td>Line change goal
+</td></tr><tr><td>%gw
+</td><td>Word change goal
+</td></tr><tr><td>%tw
+</td><td>Total words in buffer
+</td></tr><tr><td>%tl
+</td><td>Total lines in buffer
+</td></tr><tr><td>%tc
+</td><td>Total characters in buffer
+</td></tr></tbody></table><p>The default setting is &quot;WC[%W%w/%tw]&quot;.  This displays a &quot;WC[&quot;
+followed by the original word count, then the change in word
+count, followed by a slash and the total number of words in the
+buffer.
+</p><p></p><p></p></section></section></section></article>
+
+      
+      
+      
+      
+      
+    </main>
+  </content>
+  <footer>
+    © B.N.Beckwith 2014 | <a href="/rss.xml">RSS</a>
+  </footer>
+
+
+</body></html>

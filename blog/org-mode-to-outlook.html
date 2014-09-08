@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Org mode to Outlook</title>
+
+  
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+  <![endif]-->
+
+
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+
+</head>
+
+<body>
+
+  <content>
+
+    <aside role="nav" class="nav">
+      <nav>
+        <h3 id="logo"><a id="sitename" href="/">bnbeckwith</a></h3>
+        <ul class="navbar-nav" id="navlinks">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/tags">Tags</a></li>
+          <li id=""><a href="/archive">Archive</a></li><li><a href="/code/">Code</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="content-wrapper">
+      <div id="page-header">
+        <h1 id="content-title">Org mode to Outlook</h1>
+      </div>
+      
+      <article id="content"><section id="root"><p></p><p>I keep my meeting agendas and minutes in Orgmode for everything I do
+at work. However, when it comes time to share them, they need to be
+pretty in email. That's where a little bit of scripting and existing
+exporting features plays nicely.
+</p><p></p><p></p><p></p><section class="hsec2"><h2>Setup the export</h2><p>  The export step is really quite easy.  Just do a 
+<verbatim>C-c C-e</verbatim> followed
+<!-- 
+ -->  by 
+<verbatim>h H</verbatim> for HTML export into a new buffer. The nice touch is that
+<!-- 
+ -->  this is also added to the clipboard.
+</p><p>  For my purposes, I keep several meetings in one project file.
+  Before exporting, I narrow the tree to just the agenda or minutes
+  that I want to send. Then, I export the narrowed scope.
+</p><p>  I keep meeting entries like the following example.
+</p><p><!-- pygmentize error: Error: no lexer for alias 'org' found
+
+ Output:
+ Error Code: 1
+--></p><p></p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>Setup Outlook</h2><p>  Most of my communication work happens through Outlook (2013). That means
+  that if I wanted, I could send a HTML email to preserve any
+  formatting from 
+<verbatim>org-export</verbatim>.
+<!-- 
+ --></p><p>  And that is just what I do.  The following VBA code gets added to
+  Outlook first.
+</p><p></p><div class="highlight"><pre>  <span class="k">Sub</span> <span class="nf">AppendClipboardHTML</span><span class="p">()</span>
+      <span class="k">Dim</span> <span class="n">email</span> <span class="ow">As</span> <span class="n">Outlook</span><span class="p">.</span><span class="n">MailItem</span>
+      <span class="k">Dim</span> <span class="n">cBoard</span> <span class="ow">As</span> <span class="n">DataObject</span>
+      
+      <span class="k">Set</span> <span class="n">email</span> <span class="o">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">ActiveInspector</span><span class="p">.</span><span class="n">CurrentItem</span>
+      <span class="k">Set</span> <span class="n">cBoard</span> <span class="o">=</span> <span class="k">New</span> <span class="n">DataObject</span>
+      
+      
+      <span class="n">cBoard</span><span class="p">.</span><span class="n">GetFromClipboard</span>
+      <span class="n">email</span><span class="p">.</span><span class="n">HTMLBody</span> <span class="o">=</span> <span class="n">email</span><span class="p">.</span><span class="n">HTMLBody</span> <span class="o">+</span> <span class="n">cBoard</span><span class="p">.</span><span class="n">GetText</span>
+      
+      <span class="k">Set</span> <span class="n">cBoard</span> <span class="o">=</span> <span class="k">Nothing</span>
+      <span class="k">Set</span> <span class="n">email</span> <span class="o">=</span> <span class="k">Nothing</span>
+      
+  <span class="k">End</span> <span class="k">Sub</span>
+</pre></div>
+<p></p><p>  To add to Outlook, hit 
+<verbatim>Alt-F11</verbatim> to bring up the VBA editor.  In
+<!-- 
+ -->  there, I just add a new module and copy in the function from above.
+</p><p>  This function only makes sense in context of an email. To enable it
+  there, I add it to the quick access toolbar at the top. Press
+  
+<verbatim>Alt-S-m</verbatim> to open up a new email.  Then select the little down arrow
+<!-- 
+ -->  for &quot;Customize Quick Access Toolbar&quot; and select &quot;More Commands&quot;.
+</p><p>  
+</p><figure><img alt="[&quot;More Commands on the Quick Access Toolbar&quot;]" src="../images/QuickAccessToolbar.png"><figcaption>More Commands on the Quick Access Toolbar</figcaption></figure><p>  The next window will have a dropdown box to select the command
+  source. Choose 
+<strong>Macros
+</strong> to see a list of your macros within outlook.
+<!-- 
+ --></p><p>  
+</p><figure><img alt="[&quot;Add the Quick Access Toolbar Icon&quot;]" src="../images/AddQuickAccessToolbarIcon.png"><figcaption>Add the Quick Access Toolbar Icon</figcaption></figure><p>  Now, simply click on the 
+<strong>Add &gt;&gt;
+</strong> button to put it into the list of
+<!-- 
+ -->  commands available at the top of emails.  The 
+<strong>Modify...
+</strong> button
+<!-- 
+ -->  will allow you to change the icon or command name.
+</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>Insert into email</h2><p>  Now clicking on that button will copy clipboard contents into the
+  email 
+<em>as html
+</em>. Our raw HTML exported from Orgmode gets inserted
+<!-- 
+ -->  nicely and we gain the formatting desired.
+</p><p>  The other bonus (or maybe the main point) is that now you can also
+  use a built-in shorcut for the Quick Access Toolbar commands to run
+  this one. By pressing 
+<verbatim>Alt</verbatim>, you can see a number by your command. 
+<!-- 
+ --></p><p>  
+</p><figure><img alt="[&quot;Press ALT to see Toolbar Shortcuts&quot;]" src="../images/AltAccessToToolbar.png"><figcaption>Press ALT to see Toolbar Shortcuts</figcaption></figure><p>  For me, it is 
+<verbatim>1</verbatim> so 
+<verbatim>Alt-1</verbatim> will run this command for me. I can
+<!-- 
+ -->  keep my meetings organized in Emacs and still use Outlook for
+  communication.
+</p><p></p><p></p><p></p></section></section></article>
+
+      <div id="blogmeta">
+        This entry was published on <span class="published longdate">23 Jan 2014</span>, filed under
+        <ul class="tag-list">
+          <li><a href="/tags/emacs/">emacs</a></li><li><a href="/tags/org-mode/">org-mode</a></li>
+        </ul>
+      </div>
+      
+      
+      
+      
+    </main>
+  </content>
+  <footer>
+    © B.N.Beckwith 2014 | <a href="/rss.xml">RSS</a>
+  </footer>
+
+
+</body></html>

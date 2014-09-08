@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>WriteGood Mode</title>
+
+  
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+  <![endif]-->
+
+
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+
+</head>
+
+<body>
+
+  <content>
+
+    <aside role="nav" class="nav">
+      <nav>
+        <h3 id="logo"><a id="sitename" href="/">bnbeckwith</a></h3>
+        <ul class="navbar-nav" id="navlinks">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/tags">Tags</a></li>
+          <li id=""><a href="/archive">Archive</a></li><li><a href="/code/">Code</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="content-wrapper">
+      <div id="page-header">
+        <h1 id="content-title">WriteGood Mode</h1>
+      </div>
+      
+      <article id="content"><section id="root"><p>There was a 
+<a href="http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/">nice article by Matt Might</a> showing off some shell scripts
+<!-- 
+ -->aimed at improving writing.  These scripts were the inspiration for
+the WriteGood minor mode.  Like the originals, this mode aids writings
+by checking for three fundamental problems:
+</p><p></p><ul><li><a href="#weasel">Weasel Words</a></li><li><a href="#passive">Passive Voice</a></li><li><a href="#duplicates">Duplicates</a></li></ul><p></p><p></p><p></p><section class="hsec2"><h2>Installation and Usage</h2><p>To use the mode, first 
+<a href="http://github.com/bnbeckwith/writegood-mode">grab it from Github</a> or use one of the following
+<!-- 
+ -->commands.
+</p><p></p><div class="highlight"><pre>&gt; git clone git://github.com/bnbeckwith/writegood-mode.git
+&gt; git clone http://github.com/bnbeckwith/writegood-mode.git
+</pre></div>
+<p>Then use code like the following to add it to emacs.
+</p><p></p><div class="highlight"><pre>  <span class="c1">;; Supply the path to the mode repository </span>
+  <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'load-path</span> <span class="s">&quot;location/of/writegood-mode&quot;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">require</span> <span class="ss">'writegood-mode</span><span class="p">)</span>
+  <span class="c1">;; Set a global key to toggle the mode</span>
+  <span class="p">(</span><span class="nv">global-set-key</span> <span class="s">&quot;\C-cg&quot;</span> <span class="ss">'writegood-mode</span><span class="p">)</span>
+</pre></div>
+<p>When you want to show troublesome text, just turn on the mode with
+your defined key.
+</p><p></p><p></p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>Writing Checks</h2><p>WriteGood checks the text in three ways to find potential problems.
+In each case, a warning font highlights the problem. You can customize
+these fonts to your liking. By default, each font inheirts from the
+default warning face and adds a light background.
+</p><p></p><figure><img alt="[&quot;Emacs Screen Shot&quot;]" src="../images/SS_1105041529_emacs.png"><figcaption>Emacs Screen Shot</figcaption></figure><p>Matt explains each of these nicely in 
+<a href="http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/">his original article</a>, but
+<!-- 
+ -->I will also briefly discuss the issues here.
+</p><p></p><p></p><p></p><p></p><section class="hsec3"><h3>Weasel Words</h3><!-- <a href="#weasel" id="weasel"></a> --><a href="#weasel" id="weasel"></a><p>Simply put, these are words that add no value to the text.  These
+superfluous words seem to add value but only create clutter. By
+eliminating these extra (and useless) words, text becomes clear and to
+the point.
+</p><p></p><p>You are free to customize the list used in this check.
+</p><p></p><p></p><p></p><p></p></section><section class="hsec3"><h3>Passive Voice</h3><!-- <a href="#passive" id="passive"></a> --><a href="#passive" id="passive"></a><p>Use of 
+<a href="http://en.wikipedia.org/wiki/English_passive_voice">passive voice</a> is one troublesome area in which I find myself
+<!-- 
+ -->failing often. The passive voice construction of sentences can be
+clunky causing the reader to try hard to get at the meaning. Active
+voice, on the other hand, is less clumsy and promotes clearer meaning.
+</p><p>Style guides such as 
+<em>The Elements of Style
+</em> suggest favoring the
+<!-- 
+ -->active voice, but also allow for the occasions in which the passive
+voice is acceptable. As a result, not every warning produced by this
+check will be valid for your writing.
+</p><p>The check has two main regular expressions.  There is the main regular
+expression that has the forms of &quot;to be&quot; followed by a verb.  The
+following verb is either a word ending in &quot;ed&quot; or one specified by a
+list of irregular verbs whose past participle does not end in &quot;ed&quot;.
+You can customized the list of irregulars if you find it is lacking.
+</p><p></p><p></p><p></p><p></p></section><section class="hsec3"><h3>Duplicates</h3><!-- <a href="#duplicates" id="duplicates"></a> --><a href="#duplicates" id="duplicates"></a><p>Too often when writing or editing, especially when tired, text copied
+and pasted introduces duplicate words.  Because of the way our minds
+work, this glitch is not always noticed.  This error is especially
+difficult to notice when happening at line breaks.
+</p><p>The check for duplicate words does just that -- it checks to see if
+any repeated words exist in the document.  The check ignores case
+and catches errors like &quot;The the&quot;.  The check also runs across line
+breaks to catch duplicates adjacent but not on the same line.
+</p><p></p><p></p><p></p><p></p><p></p></section></section></section></article>
+
+      
+      
+      
+      
+      
+    </main>
+  </content>
+  <footer>
+    © B.N.Beckwith 2014 | <a href="/rss.xml">RSS</a>
+  </footer>
+
+
+</body></html>

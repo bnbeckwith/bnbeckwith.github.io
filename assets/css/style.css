@@ -1,0 +1,283 @@
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display:700,700italic|Open+Sans|Droid+Sans+Mono);
+@import url("pygments.css");
+
+@media all {html {font-size: 24px;}}@media all and (max-width:1000px){html {font-size: 24px;}}@media all and (max-width:960px){html {font-size: 23px;}}@media all and (max-width:920px){html {font-size: 22px;}}@media all and (max-width:880px){html {font-size: 21px;}}@media all and (max-width:840px){html {font-size: 20px;}}@media all and (max-width:800px){html {font-size: 19px;}}@media all and (max-width:760px){html {font-size: 18px;}}@media all and (max-width:720px){html {font-size: 17px;}}@media all and (max-width:680px){html {font-size: 16px;}}@media all and (max-width:640px){html {font-size: 15px;}}@media all and (max-width:600px){html {font-size: 14px;}}@media all and (max-width:560px){html {font-size: 13px;}}@media all and (max-width:520px){html {font-size: 12px;}}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+body,li, p{
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+}
+
+#page-header, h1,h2,h3,h4,h5,h6 {
+    font-family: "Playfair Display", serif;
+}
+
+h4, h5, h6 {
+    font-style: italic;
+}
+
+
+html { 
+    line-height: 1.5;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga";
+    -o-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+
+    -moz-font-feature-settings: 'kern=1';
+    -moz-font-feature-settings: 'kern' 1;
+    -webkit-font-feature-settings: 'kern' 1;
+    -o-font-feature-settings: 'kern' 1;
+    -ms-font-feature-settings: 'kern' 1;
+    font-feature-settings: 'kern' 1;
+
+    text-rendering: optimizeLegibility;
+    -moz-font-feature-settings: 'liga=1';
+    -moz-font-feature-settings: 'liga' 1;
+    -webkit-font-feature-settings: 'liga' 1;
+    -o-font-feature-settings: 'liga' 1;
+    -ms-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
+    height: 100%;
+}
+
+li { -moz-column-break-inside: avoid;
+     -webkit-column-break-inside: avoid;
+     -o-column-break-inside: avoid;
+     -ms-column-break-inside: avoid;
+     column-break-inside: avoid;
+     -moz-break-inside: avoid-column;
+     -webkit-break-inside: avoid-column;
+     -o-break-inside: avoid-column;
+     -ms-break-inside: avoid-column;
+     break-inside: avoid-column;}
+
+body{
+    width: 100%;
+    max-width: 1000px;
+    min-width: 520px;
+    min-height: 100%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+}
+
+verbatim {
+    font-family: "Droid Sans Mono";
+    font-size: .8em;
+    border: 1px solid #ccc;
+    background: #eee;
+    border-radius: 2px;
+}
+
+pre {
+    font-family: "Droid Sans Mono";
+    font-size: .8em;
+}
+
+img {
+    max-width: 100%;
+    -moz-box-shadow: 3px 3px 16px;
+    -webkit-box-shadow: 3px 3px 16px;
+    box-shadow: 3px 3px 16px;
+}
+
+.highlight {
+    padding: .5em;
+    margin-left: -9rem;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-left: 5px solid #ccc;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+.highlight:hover{
+    overflow: auto;
+}
+
+#content-wrapper {
+    clear: left;
+    margin: auto;
+    margin-bottom: 2em;
+ }
+
+article p {
+    margin-bottom: 1.5em;
+}
+
+#page-header {
+    font-size: 1.2em;
+}
+
+#page-header p{
+    border: 21em solid #eee;
+    border-width: .5em 0 0;
+    padding: .9em 0 .9em;
+    margin: 0 !important;
+}
+
+body > * {
+    font-size: 100%;
+    margin-left: 11.5rem;
+    margin-right: 2.5rem;
+}
+
+content {
+    display: block;
+    padding: 3rem 0 10rem 0;
+    position: relative;
+}
+
+footer {
+    border-top: .2em solid black;
+    color: #ccc;
+}
+
+#sitename {
+    font-family: "Playfair Display";
+    font-style: italic;
+    color: #ccc;
+}
+
+#sitename:hover { color: #C0C; }
+
+.nav { 
+    position: relative; 
+    color: #eee; 
+    margin-bottom: 1em; 
+    border-bottom: .2em solid black;}
+
+/* /\* .nav h5 { font-weight: bold; } *\/ */
+.nav h3 {  } 
+.nav ul { margin-bottom: 1.5em; position: absolute; top: 0;  right: 0}  
+.nav li { display: inline; list-style: none; margin-left: 1em; text-transform:capitalize; }  
+
+/* Blog page styling */
+.hfeed {margin-top 1em; }
+
+.hentry {position: relative;}
+.hfeed h2 {font-style: normal; font-family: "Open Sans";}
+ol.hfeed li { list-style: none; }
+
+.published { position: absolute;
+             left: -6em;
+             top: .5em;
+             color: #eee;
+           }
+
+ol.hfeed li article {font-style: normal; font-family: "Open Sans";}
+
+.tag-list li {display: inline; 
+              list-style: none; 
+              margin-left: 1em;}
+
+.tag-list a { text-transform: lowercase;}
+
+/* Tags Page Styling */
+ol#summary-list li {list-style: none; margin-left: 1em;}
+#summary-list h2 {font-family: "Open Sans"; text-transform: capitalize;}
+
+
+ table	{ width: 100%; text-align: left; border-collapse: collapse; border-spacing: 0; margin-bottom: 1.5em; } 
+
+table th,
+ table td	{ 
+ 	width: 33%; padding: .375em 1em;
+	
+ 	-webkit-font-feature-settings: "tnum"; 
+ 	-moz-font-feature-settings: "tnum"; 
+ 	-ms-font-feature-settings: "tnum"; 
+ 	-o-font-feature-settings: "tnum"; 
+ 	font-feature-settings: "tnum";	 
+ } 
+
+table th[scope=col], 
+table td { text-align: right; } 
+
+tbody tr:nth-child(odd) { background: #eee; } 
+
+
+tr th { 
+    border-bottom: .0625em solid #000; 
+    padding-bottom: .3125em; 
+    background: #fff;
+} 
+
+::-moz-selection {
+    background-color: #7D26CD;
+    color: #EEE;
+}
+::selection {
+    background-color: #7D26CD;
+    color: #EEE;
+}
+
+a {
+    color: #C0C;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ccc;
+}
+
+a:hover {
+    color: #C0C;
+}
+
+figure {
+    position: relative;
+}
+
+figcaption {
+    margin-left: -12em;
+    position: absolute;
+    top: 0;
+    width: 9.5em;
+    text-align: right;
+    font-size: .75em;
+    color: #bbb;
+    font-style: italic;
+}
+
+#blogmeta .published {
+    position: relative;
+    left: 0;
+    top: 0;
+    color: inherit;
+}
+#blogmeta {
+    position: relative;
+    color: #ddd;
+    font-size: .8em;
+    margin: 2.5em 1.5em -2.5em 1.5em;
+}
+
+#blogmeta .tag-list li:after {
+    content : ", ";
+}
+#blogmeta .tag-list li {
+    display: inline;
+    margin-left: 0;
+}
+#blogmeta .tag-list {
+    display: inline;
+    list-style: none;
+}
+
+#blogmeta .tag-list li:last-child:after {
+    content: ".";
+}
+
+footer {
+    font-size: .75em;
+}

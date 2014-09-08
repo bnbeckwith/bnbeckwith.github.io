@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom='http://www.w3.org/2005/Atom' version='2.0'>
+<channel>
+<atom:link href='http://bnbeckwith.com/rss.xml' rel='self' type='application/rss+xml'/>
+<generator>
+clj-rss
+</generator>
+<title>
+bnbeckwith
+</title>
+<link>
+http://bnbeckwith.com/rss.xml
+</link>
+<description>
+Personal blog of one B.N.BECKWITH
+</description>
+<item>
+<title>
+Org mode to Outlook
+</title>
+<link>
+http://bnbeckwith.com/blog/org-mode-to-outlook.html
+</link>
+<guid>
+http://bnbeckwith.com/blog/org-mode-to-outlook.html
+</guid>
+<description>
+
+</description>
+<author>
+bnbeckwith@gmail.com
+</author>
+<pubDate>
+Thu, 23 Jan 2014 19:00:00 -0500
+</pubDate>
+</item>
+<item>
+<title>
+Emacs menu access when there is no menu
+</title>
+<link>
+http://bnbeckwith.com/blog/emacs-menu-access-when-there-is-no-menu.html
+</link>
+<guid>
+http://bnbeckwith.com/blog/emacs-menu-access-when-there-is-no-menu.html
+</guid>
+<description>
+Access emacs menu with M-`
+</description>
+<author>
+bnbeckwith@gmail.com
+</author>
+<pubDate>
+Thu, 18 Aug 2011 20:00:00 -0400
+</pubDate>
+</item>
+<item>
+<title>
+Org Mode for Code Reviews
+</title>
+<link>
+http://bnbeckwith.com/blog/org-mode-for-code-reviews.html
+</link>
+<guid>
+http://bnbeckwith.com/blog/org-mode-for-code-reviews.html
+</guid>
+<description>
+
+</description>
+<author>
+bnbeckwith@gmail.com
+</author>
+<pubDate>
+Mon, 23 May 2011 20:00:00 -0400
+</pubDate>
+</item>
+<item>
+<title>
+Not killing Emacs on Windows
+</title>
+<link>
+http://bnbeckwith.com/blog/not-killing-emacs-on-windows.html
+</link>
+<guid>
+http://bnbeckwith.com/blog/not-killing-emacs-on-windows.html
+</guid>
+<description>
+
+</description>
+<author>
+bnbeckwith@gmail.com
+</author>
+<pubDate>
+Sun, 03 Jan 2010 19:00:00 -0500
+</pubDate>
+</item>
+</channel>
+</rss>
