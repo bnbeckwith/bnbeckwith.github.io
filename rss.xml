@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom='http://www.w3.org/2005/Atom' version='2.0'>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
 <channel>
 <atom:link href='http://bnbeckwith.com/rss.xml' rel='self' type='application/rss+xml'/>
 <generator>
@@ -14,6 +14,26 @@ http://bnbeckwith.com/rss.xml
 <description>
 Personal blog of one B.N.BECKWITH
 </description>
+<item>
+<title>
+Enabling tikz previews in org-mode
+</title>
+<link>
+http://bnbeckwith.com/blog/org-mode-tikz-previews-on-windows.html
+</link>
+<guid>
+http://bnbeckwith.com/blog/org-mode-tikz-previews-on-windows.html
+</guid>
+<description>
+Enable tikz previews in emacs
+</description>
+<author>
+bnbeckwith@gmail.com
+</author>
+<pubDate>
+Tue, 09 Sep 2014 20:00:00 -0400
+</pubDate>
+</item>
 <item>
 <title>
 Org mode to Outlook
