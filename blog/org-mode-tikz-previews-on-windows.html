@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Enabling tikz previews in org-mode</title>
+
+  
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+  <![endif]-->
+
+
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+
+</head>
+
+<body>
+
+  <content>
+
+    <aside role="nav" class="nav">
+      <nav>
+        <h3 id="logo"><a id="sitename" href="/">bnbeckwith</a></h3>
+        <ul class="navbar-nav" id="navlinks">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/tags">Tags</a></li>
+          <li id=""><a href="/archive">Archive</a></li><li><a href="/code/">Code</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="content-wrapper">
+      <div id="page-header">
+        <h1 id="content-title">Enabling tikz previews in org-mode</h1>
+      </div>
+      
+      <article id="content"><section id="root"><p>I just started usign 
+<code>tikz
+</code> for diagrams in technical
+<!-- 
+ -->documentation. It would export fine and look great (both pdf and
+html), but previewing in the Emacs buffer wasn't working at all. This
+I had to fix.
+</p><p>After some 
+<a href="http://lists.gnu.org/archive/html/emacs-orgmode/2009-08/msg00487.html">light</a> 
+<a href="http://orgmode.org/manual/LaTeX-fragments.html#LaTeX-fragments">reading</a> I began to set it up. But, it failed
+<!-- 
+ -->miserably on windows. Working through the issues, there are three
+things that need to be in place.
+</p><p></p><ol><li>Install Ghostscript
+</li><li>Install Imagemagick
+</li><li>Configure emacs correctly.
+</li></ol><p></p><p></p><p></p><p></p><section class="hsec2"><h2>Installing Ghostscript</h2><p>  
+<a href="http://www.ghostscript.com/download/gsdnld.html">Download</a> the 32-bit version (this seems to be the default by other
+<!-- 
+ -->  tools) and install it on your system. The binary ends up being somewhere like:
+</p><p>: C:
+<em>Program Files
+</em>gs
+<em>gs9.14
+</em>bin
+<!-- 
+ --></p><p>  Add this location to your path ensuring that all programs can find 
+<verbatim>gswin32c.exe</verbatim>.
+<!-- 
+ --></p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>Installing Imagemagick</h2><p>  One of the key insights is that 
+<code>dvipng
+</code> does not support 
+<code>tikz
+</code>,
+<!-- 
+ -->  but 
+<code>imagemagick
+</code> does. Or, more correctly, the 
+<!-- 
+ --><verbatim>convert.exe</verbatim>  program will convert the 
+<verbatim>pdf</verbatim> output into a regular image file.
+<!-- 
+ --></p><p>  The 
+<a href="http://www.imagemagick.org/script/binary-releases.php#windows">Imagemagick download page</a> has instructions for installing the
+<!-- 
+ -->  binaries and dealing with any issues.
+</p><p>  The installer should also setup the path to the executables correctly.
+</p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>Configuring Emacs</h2><p>  This ended up being the trickiest part for figuring out 
+<em>what
+</em> to
+<!-- 
+ -->  set, but easy settings to make.
+</p><p>  The first part sets up 
+<code>tikz
+</code> as one of the default packages for
+<!-- 
+ -->  LaTeX processing. Then, enable the 
+<code>tikzpicture
+</code> environment for previewing.
+<!-- 
+ --></p><p></p><div class="highlight"><pre>  <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-packages-alist</span>
+               <span class="o">'</span><span class="p">(</span><span class="s">&quot;&quot;</span> <span class="s">&quot;tikz&quot;</span> <span class="no">t</span><span class="p">))</span>
+
+  <span class="p">(</span><span class="nv">eval-after-load</span> <span class="s">&quot;preview&quot;</span>
+    <span class="o">'</span><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'preview-default-preamble</span> <span class="s">&quot;\\PreviewEnvironment{tikzpicture}&quot;</span> <span class="no">t</span><span class="p">))</span>
+</pre></div>
+<p>  Together those two pieces enable LaTeX to do its thing to make the
+  picture. What is missing now is the processing of the 
+<verbatim>pdf</verbatim> output
+<!-- 
+ -->  into an image format.
+</p><p>  The two options for images are 
+<code>dvipng
+</code> or 
+<code>imagemagick
+</code>.  It turns
+<!-- 
+ -->  out that the former cannot handle 
+<code>tikz
+</code>, so we use
+<!-- 
+ -->  
+<code>imagemagick
+</code>. Setting the default program here is simple too.
+<!-- 
+ --></p><p></p><div class="highlight"><pre>  <span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-create-formula-image-program</span> <span class="ss">'imagemagick</span><span class="p">)</span>
+</pre></div>
+<p>  After you complete these steps, a simple 
+<verbatim>C-c C-x C-l</verbatim> will preview
+<!-- 
+ -->  the sections. And a 
+<verbatim>C-c C-c</verbatim> will turn them back to the source
+<!-- 
+ -->  text.
+</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>What did I not cover?</h2><p></p><ul><li>Installing a TeX system
+</li><li>Adding LaTeX header options
+</li></ul><p></p><p></p><p></p><p></p></section></section></article>
+
+      <div id="blogmeta">
+        This entry was published on <span class="published longdate">2014.09.09</span>, filed under
+        <ul class="tag-list">
+          <li><a href="/tags/emacs/">emacs</a></li><li><a href="/tags/org-mode/">org-mode</a></li>
+        </ul>
+      </div>
+      
+      
+      
+      
+    </main>
+  </content>
+  <footer>
+    © B.N.Beckwith 2014 | <a href="/rss.xml">RSS</a>
+  </footer>
+
+
+</body></html>
