@@ -1,118 +1,660 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
-<channel>
-<atom:link href='http://bnbeckwith.com/rss.xml' rel='self' type='application/rss+xml'/>
-<generator>
-clj-rss
-</generator>
-<title>
-bnbeckwith
-</title>
-<link>
-http://bnbeckwith.com/rss.xml
-</link>
-<description>
-Personal blog of one B.N.BECKWITH
-</description>
-<item>
-<title>
-Enabling tikz previews in org-mode
-</title>
-<link>
-http://bnbeckwith.com/blog/org-mode-tikz-previews-on-windows.html
-</link>
-<guid>
-http://bnbeckwith.com/blog/org-mode-tikz-previews-on-windows.html
-</guid>
-<description>
-Enable tikz previews in emacs
-</description>
-<author>
-bnbeckwith@gmail.com
-</author>
-<pubDate>
-Tue, 09 Sep 2014 20:00:00 -0400
-</pubDate>
-</item>
-<item>
-<title>
-Org mode to Outlook
-</title>
-<link>
-http://bnbeckwith.com/blog/org-mode-to-outlook.html
-</link>
-<guid>
-http://bnbeckwith.com/blog/org-mode-to-outlook.html
-</guid>
-<description>
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+	 xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	 xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	 xmlns:dc="http://purl.org/dc/elements/1.1/"
+	 xmlns:atom="http://www.w3.org/2005/Atom"
+	 xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	 xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	 xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>(Blog)</title>
+  <atom:link href="http://bnbeckwith.com/index.xml" rel="self" type="application/rss+xml" />
+  <link>http://bnbeckwith.com/</link>
+  <description><![CDATA[]]></description>
+  <language>en</language>
+  <pubDate>Wed, 17 Dec 2014 10:06:00 -0500</pubDate>
+  <lastBuildDate>Wed, 17 Dec 2014 10:06:00 -0500</lastBuildDate>
+  <generator>Emacs 24.4 Org-mode 8.2.10</generator>
+  <webMaster>bnbeckwith@gmail.com (Benjamin Beckwith)</webMaster>
+  <image>
+    <url>http://orgmode.org/img/org-mode-unicorn-logo.png</url>
+    <title>(Blog)</title>
+    <link>http://bnbeckwith.com/</link>
+  </image>
 
-</description>
-<author>
-bnbeckwith@gmail.com
-</author>
-<pubDate>
-Thu, 23 Jan 2014 19:00:00 -0500
-</pubDate>
-</item>
-<item>
-<title>
-Emacs menu access when there is no menu
-</title>
-<link>
-http://bnbeckwith.com/blog/emacs-menu-access-when-there-is-no-menu.html
-</link>
-<guid>
-http://bnbeckwith.com/blog/emacs-menu-access-when-there-is-no-menu.html
-</guid>
-<description>
-Access emacs menu with M-`
-</description>
-<author>
-bnbeckwith@gmail.com
-</author>
-<pubDate>
-Thu, 18 Aug 2011 20:00:00 -0400
-</pubDate>
-</item>
-<item>
-<title>
-Org Mode for Code Reviews
-</title>
-<link>
-http://bnbeckwith.com/blog/org-mode-for-code-reviews.html
-</link>
-<guid>
-http://bnbeckwith.com/blog/org-mode-for-code-reviews.html
-</guid>
-<description>
+  <item>
+    <title>Enabling tikz previews in org-mode</title>
+    <link>http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/org-mode-tikz-previews-on-windows.html</link>
+    <guid isPermaLink="false">http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/org-mode-tikz-previews-on-windows.html</guid>
+    <pubDate>Wed, 10 Sep 2014 00:00:00 -0400</pubDate>
 
-</description>
-<author>
-bnbeckwith@gmail.com
-</author>
-<pubDate>
-Mon, 23 May 2011 20:00:00 -0400
-</pubDate>
-</item>
-<item>
-<title>
-Not killing Emacs on Windows
-</title>
-<link>
-http://bnbeckwith.com/blog/not-killing-emacs-on-windows.html
-</link>
-<guid>
-http://bnbeckwith.com/blog/not-killing-emacs-on-windows.html
-</guid>
-<description>
+    <description><![CDATA[<div id="table-of-contents">
+    <h2>Table of Contents</h2>
+    <div id="text-table-of-contents">
+    <ul>
+    <li><a href="#sec-1">1. Installing Ghostscript</a></li>
+    <li><a href="#sec-2">2. Installing Imagemagick</a></li>
+    <li><a href="#sec-3">3. Configuring Emacs</a></li>
+    <li><a href="#sec-4">4. What did I not cover?</a></li>
+    </ul>
+    </div>
+    </div>
+    <p>
+    I just started using <code class="code">tikz</code> for diagrams in technical
+    documentation. It would export fine and look great (both pdf and
+    html), but previewing in the Emacs buffer wasn't working at all. This
+    I had to fix.
+    </p>
 
-</description>
-<author>
-bnbeckwith@gmail.com
-</author>
-<pubDate>
-Sun, 03 Jan 2010 19:00:00 -0500
-</pubDate>
+    <p>
+    After some <a href="http://lists.gnu.org/archive/html/emacs-orgmode/2009-08/msg00487.html">light</a> <a href="http://orgmode.org/manual/LaTeX-fragments.html#LaTeX-fragments">reading</a> I began to set it up. But, it failed
+    miserably on windows. Working through the issues, there are three
+    things that need to be in place.
+    </p>
+
+    <ol class="org-ol">
+    <li>Install Ghostscript
+    </li>
+    <li>Install Imagemagick
+    </li>
+    <li>Configure emacs correctly.
+    </li>
+    </ol>
+
+    <div id="outline-container-sec-1" class="outline-2">
+    <h2 id="sec-1"><span class="section-number-2">1</span> Installing Ghostscript</h2>
+    <div class="outline-text-2" id="text-1">
+    <p>
+    <a href="http://www.ghostscript.com/download/gsdnld.html">Download</a> the 32-bit version (this seems to be the default by other
+    tools) and install it on your system. The binary ends up being somewhere like:
+    </p>
+
+    <p>
+    <code class="verbatim">C:/Program Files/gs/gs9.14/bin</code>
+    </p>
+
+    <p>
+    Add this location to your path ensuring that all programs can find <code class="verbatim">gswin32c.exe</code>.
+    </p>
+    </div>
+    </div>
+
+    <div id="outline-container-sec-2" class="outline-2">
+    <h2 id="sec-2"><span class="section-number-2">2</span> Installing Imagemagick</h2>
+    <div class="outline-text-2" id="text-2">
+    <p>
+    One of the key insights is that <code class="code">dvipng</code> does not support <code class="code">tikz</code>,
+    but <code class="code">imagemagick</code> does. Or, more correctly, the <code class="verbatim">convert.exe</code>
+    program will convert the <code class="verbatim">pdf</code> output into a regular image file.
+    </p>
+
+    <p>
+    The <a href="http://www.imagemagick.org/script/binary-releases.php#windows">Imagemagick download page</a> has instructions for installing the
+    binaries and dealing with any issues.
+    </p>
+
+    <p>
+    The installer should also setup the path to the executables correctly.
+    </p>
+    </div>
+    </div>
+
+    <div id="outline-container-sec-3" class="outline-2">
+    <h2 id="sec-3"><span class="section-number-2">3</span> Configuring Emacs</h2>
+    <div class="outline-text-2" id="text-3">
+    <p>
+    This ended up being the trickiest part for figuring out <i>what</i> to
+    set, but easy settings to make.
+    </p>
+
+    <p>
+    The first part sets up <code class="code">tikz</code> as one of the default packages for
+    LaTeX processing. Then, enable the <code class="code">tikzpicture</code> environment for previewing.
+    </p>
+
+    <div class="org-src-container">
+
+    <pre class="src src-emacs-lisp">(add-to-list 'org-latex-packages-alist
+    '(<span style="color: #3e999f;">""</span> <span style="color: #3e999f;">"tikz"</span> t))
+
+    (eval-after-load <span style="color: #3e999f;">"preview"</span>
+    '(add-to-list 'preview-default-preamble <span style="color: #3e999f;">"\\PreviewEnvironment{tikzpicture}"</span> t))
+    </pre>
+    </div>
+
+    <p>
+    Together those two pieces enable LaTeX to do its thing to make the
+    picture. What is missing now is the processing of the <code class="verbatim">pdf</code> output
+    into an image format.
+    </p>
+
+    <p>
+    The two options for images are <code class="code">dvipng</code> or <code class="code">imagemagick</code>.  It turns
+    out that the former cannot handle <code class="code">tikz</code>, so we use
+    <code class="code">imagemagick</code>. Setting the default program here is simple too.
+    </p>
+
+    <div class="org-src-container">
+
+    <pre class="src src-emacs-lisp">(setq org-latex-create-formula-image-program 'imagemagick)
+    </pre>
+    </div>
+
+    <p>
+    After you complete these steps, a simple <code class="verbatim">C-c C-x C-l</code> will preview
+    the sections. And a <code class="verbatim">C-c C-c</code> will turn them back to the source
+    text.
+    </p>
+    </div>
+    </div>
+
+    <div id="outline-container-sec-4" class="outline-2">
+    <h2 id="sec-4"><span class="section-number-2">4</span> What did I not cover?</h2>
+    <div class="outline-text-2" id="text-4">
+    <ul class="org-ul">
+    <li>Installing a TeX system
+    </li>
+    <li>Adding LaTeX header options
+    </li>
+    </ul>
+    </div>
+    </div>
+    ]]></description>
+</item>
+
+
+<item>
+  <title>Org mode to Outlook</title>
+  <link>http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/org-mode-to-outlook.html</link>
+  <guid isPermaLink="false">http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/org-mode-to-outlook.html</guid>
+  <pubDate>Fri, 24 Jan 2014 00:00:00 -0500</pubDate>
+
+  <description><![CDATA[<div id="table-of-contents">
+  <h2>Table of Contents</h2>
+  <div id="text-table-of-contents">
+  <ul>
+  <li><a href="#sec-1">1. Setup the export</a></li>
+  <li><a href="#sec-2">2. Setup Outlook</a></li>
+  <li><a href="#sec-3">3. Insert into email</a></li>
+  </ul>
+  </div>
+  </div>
+  <p>
+  I keep my meeting agendas and minutes in Orgmode for everything I do
+  at work. However, when it comes time to share them, they need to be
+  pretty in email. That's where a little bit of scripting and existing
+  exporting features plays nicely.
+  </p>
+
+  <div id="outline-container-sec-1" class="outline-2">
+  <h2 id="sec-1"><span class="section-number-2">1</span> Setup the export</h2>
+  <div class="outline-text-2" id="text-1">
+  <p>
+  The export step is really quite easy.  Just do a <code class="verbatim">C-c C-e</code> followed
+  by <code class="verbatim">h H</code> for HTML export into a new buffer. The nice touch is that
+  this is also added to the clipboard.
+  </p>
+
+  <p>
+  For my purposes, I keep several meetings in one project file.
+  Before exporting, I narrow the tree to just the agenda or minutes
+  that I want to send. Then, I export the narrowed scope.
+  </p>
+
+  <p>
+  I keep meeting entries like the following example.
+  </p>
+
+  <div class="org-src-container">
+
+  <pre class="src src-org"><span style="color: #4271ae;">* </span><span style="color: #ff0000; font-weight: bold;">TODO</span><span style="color: #4271ae;"> WW01 Awesome Meeting</span>
+  <span style="color: #8959a8;">** Awesome Agenda</span>
+  - foo
+  - foo
+  - foo
+  <span style="color: #8959a8;">** Awesome Minutes</span>
+  - bar
+  - bar
+  - bar
+  </pre>
+  </div>
+  </div>
+  </div>
+
+  <div id="outline-container-sec-2" class="outline-2">
+  <h2 id="sec-2"><span class="section-number-2">2</span> Setup Outlook</h2>
+  <div class="outline-text-2" id="text-2">
+  <p>
+  Most of my communication work happens through Outlook (2013). That means
+  that if I wanted, I could send a HTML email to preserve any
+  formatting from <code class="verbatim">org-export</code>.
+  </p>
+
+  <p>
+  And that is just what I do.  The following VBA code gets added to
+  Outlook first.
+  </p>
+
+  <div class="org-src-container">
+
+  <pre class="src src-visual-basic">Sub AppendClipboardHTML()
+  Dim email As Outlook.MailItem
+  Dim cBoard As DataObject
+
+  Set email = Application.ActiveInspector.CurrentItem
+  Set cBoard = New DataObject
+
+
+  cBoard.GetFromClipboard
+  email.HTMLBody = email.HTMLBody + cBoard.GetText
+
+  Set cBoard = Nothing
+  Set email = Nothing
+
+  End Sub
+  </pre>
+  </div>
+
+
+  <p>
+  To add to Outlook, hit <code class="verbatim">Alt-F11</code> to bring up the VBA editor.  In
+  there, I just add a new module and copy in the function from above.
+  </p>
+
+  <p>
+  This function only makes sense in context of an email. To enable it
+  there, I add it to the quick access toolbar at the top. Press
+  <code class="verbatim">Alt-S-m</code> to open up a new email.  Then select the little down arrow
+  for "Customize Quick Access Toolbar" and select "More Commands".
+  </p>
+
+
+  <div class="figure">
+  <p><img src="../images/QuickAccessToolbar.png" alt="More commands on the Toolbar image" />
+  </p>
+  <p><span class="figure-number">Figure 1:</span> More commands on the Quick Access Toolbar</p>
+  </div>
+
+  <p>
+  The next window will have a dropdown box to select the command
+  source. Choose <b>Macros</b> to see a list of your macros within outlook.
+  </p>
+
+
+  <div class="figure">
+  <p><img src="../images/AddQuickAccessToolbarIcon.png" alt="Toolbar image" title="Quick Access Toolbar" />
+  </p>
+  <p><span class="figure-number">Figure 2:</span> Add quick access toolbar button</p>
+  </div>
+
+  <p>
+  Now, simply click on the <b>Add &gt;&gt;</b> button to put it into the list of
+  commands available at the top of emails.  The <b>Modify&#x2026;</b> button
+  will allow you to change the icon or command name.
+  </p>
+  </div>
+  </div>
+
+
+  <div id="outline-container-sec-3" class="outline-2">
+  <h2 id="sec-3"><span class="section-number-2">3</span> Insert into email</h2>
+  <div class="outline-text-2" id="text-3">
+  <p>
+  Now clicking on that button will copy clipboard contents into the
+  email <i>as html</i>. Our raw HTML exported from Orgmode gets inserted
+  nicely and we gain the formatting desired.
+  </p>
+
+  <p>
+  The other bonus (or maybe the main point) is that now you can also
+  use a built-in shorcut for the Quick Access Toolbar commands to run
+  this one. By pressing <code class="verbatim">Alt</code>, you can see a number by your command. 
+  </p>
+
+
+  <div class="figure">
+  <p><img src="../images/AltAccessToToolbar.png" alt="Alt Access to Toolbar image" />
+  </p>
+  <p><span class="figure-number">Figure 3:</span> Press ALT to see Toolbar Shortcuts</p>
+  </div>
+
+  <p>
+  For me, it is <code class="verbatim">1</code> so <code class="verbatim">Alt-1</code> will run this command for me. I can
+  keep my meetings organized in Emacs and still use Outlook for
+  communication.
+  </p>
+  </div>
+  </div>
+  ]]></description>
+</item>
+
+
+<item>
+  <title>Emacs menu access when there is no menu</title>
+  <link>http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/emacs-menu-access-when-there-is-no-menu.html</link>
+  <guid isPermaLink="false">http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/emacs-menu-access-when-there-is-no-menu.html</guid>
+  <pubDate>Fri, 19 Aug 2011 00:00:00 -0400</pubDate>
+
+  <description><![CDATA[<div id="table-of-contents">
+  <h2>Table of Contents</h2>
+  <div id="text-table-of-contents">
+  <ul>
+  <li><a href="#sec-1">1. Short Version</a></li>
+  <li><a href="#sec-2">2. Long Version</a></li>
+  </ul>
+  </div>
+  </div>
+
+  <div id="outline-container-sec-1" class="outline-2">
+  <h2 id="sec-1"><span class="section-number-2">1</span> Short Version</h2>
+  <div class="outline-text-2" id="text-1">
+  <p>
+  <code class="code">M-`</code> is very cool for navigating Emacs menus. 
+  </p>
+  </div>
+  </div>
+
+  <div id="outline-container-sec-2" class="outline-2">
+  <h2 id="sec-2"><span class="section-number-2">2</span> Long Version</h2>
+  <div class="outline-text-2" id="text-2">
+  <p>
+  Emacs always has a few surprises left for me. I typically run in a
+  minimal mode with scrollbars, the toolbar and the menu turned off.  I
+  also find my self working in a non-windowed (terminal) version of
+  emacs often. 
+  </p>
+
+  <p>
+  However, I <b>do</b> find it useful to see what
+  menu options are available for given mode.  These options can point to
+  commands that I never knew existed and get me one step more integrated
+  into the environment.  
+  </p>
+
+  <p>
+  Because I run in a simplified viewing environment, turning on the menu
+  to see the options has been, well, a process.  Ahh&#x2026; If only
+  Emacs had a "Text Mode Menu Bar". 
+  </p>
+
+  <p>
+  It does. And it has a default global key, <code class="verbatim">M-`</code>, which runs
+  <code class="verbatim">tmm-menubar</code>. From there, the interface is easy enough to
+  understand (it also tells you how to interact). 
+  </p>
+
+  <p>
+  Now I have an easy, built-in way to navigate menus without cluttering
+  up my visuals.
+  </p>
+  </div>
+  </div>
+  ]]></description>
+</item>
+
+
+<item>
+  <title>Org Mode for Code Reviews</title>
+  <link>http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/org-mode-for-code-reviews.html</link>
+  <guid isPermaLink="false">http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/org-mode-for-code-reviews.html</guid>
+  <pubDate>Tue, 24 May 2011 00:00:00 -0400</pubDate>
+
+  <description><![CDATA[<div id="table-of-contents">
+  <h2>Table of Contents</h2>
+  <div id="text-table-of-contents">
+  <ul>
+  <li><a href="#sec-1">1. Setup</a></li>
+  <li><a href="#sec-2">2. Usage</a></li>
+  <li><a href="#sec-3">3. Additional Considerations</a>
+  <ul>
+  <li><a href="#sec-3-1">3.1. Reviewer Name</a></li>
+  <li><a href="#sec-3-2">3.2. Time</a></li>
+  <li><a href="#sec-3-3">3.3. Tags</a></li>
+  </ul>
+  </li>
+  </ul>
+  </div>
+  </div>
+  <p>
+  Recently, I found myself needing a solution for tracking issues and
+  comments in source code during a review. Org mode makes this task much
+  better and easier overall. 
+  </p>
+
+  <p>
+  First, let me explain how it is better. During a review, most comments
+  focus on issues on particular line numbers.  This means that the code
+  needs must have line numbers displayed. That way, everyone can be
+  clear about the particular line for a given issue.  In emacs, this is
+  easily done with <code class="verbatim">linum-mode</code>. This completes the first
+  requirements of being able to view the code. 
+  </p>
+
+  <div id="outline-container-sec-1" class="outline-2">
+  <h2 id="sec-1"><span class="section-number-2">1</span> Setup</h2>
+  <div class="outline-text-2" id="text-1">
+  <p>
+  Now a note-taker in the meeting faces the issue of tracking all of
+  the comments and issues given by the reviewers.  This can be a tedious
+  task.  First, get the line with the issue, capture the issue and
+  assign a priority.  All of this goes into a list for the author to
+  consider when fixing the codebase.
+  </p>
+
+  <p>
+  Org-mode makes this task much easier with its ability to capture
+  issues quickly and with context.  With a keystroke, a scribe can more
+  easily fill in the details given and assign a priority. The following
+  code sets up some templates to use for the review.  The bugs have a
+  priority and fall under the "Issues" heading while the questions get
+  put under the "Questions" heading.
+  </p>
+
+  <div class="org-src-container">
+
+  <pre class="src src-elisp">(org-remember-insinuate)
+  (define-key global-map <span style="color: #3e999f;">"\C-cr"</span> 'org-remember)
+  (setq org-remember-templates
+  '((<span style="color: #3e999f;">"Code Review High"</span> ?h <span style="color: #3e999f;">"* TODO [#A] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
+  (<span style="color: #3e999f;">"Code Review Medium"</span> ?m <span style="color: #3e999f;">"* TODO [#B] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
+  (<span style="color: #3e999f;">"Code Review Low"</span> ?l <span style="color: #3e999f;">"* TODO [#C] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
+  (<span style="color: #3e999f;">"Code Review Question"</span> ?? <span style="color: #3e999f;">"* TODO %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Questions"</span>)))
+  </pre>
+  </div>
+
+  <p>
+  Note that I used <code class="verbatim">org-remember</code> (instead of <code class="verbatim">org-capture</code>) because my
+  coworkers are on emacs 23.2 so I had to be compatible wit the default
+  version of org-mode for that emacs version. 
+  </p>
+
+  <p>
+  There is one additional sticking point to discuss for this
+  solution. The links produced are really a search string within the
+  file. That means that if there are two lines with the same content,
+  the link would find only the first occurrence of the line.  The main
+  concern is that a comment on a later line could link (accidentally) to
+  an earlier line.  There are two ways to look at this.  First, you may
+  feel that the issue is the same regardless of the line (if they are
+  the same lines), so linking to one over the other is a minor
+  detail. Or, you may feel that the exact line is the important item to
+  capture and, in that case, you would need a line number.
+  </p>
+
+  <p>
+  There is a way to link using only line numbers.  Use the code shown
+  below to create the file search string from the line number.
+  </p>
+
+  <div class="org-src-container">
+
+  <pre class="src src-elisp">(<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">my/linenum</span>()
+  <span style="color: #8959a8;">"Use line number as the file linking item"</span>
+  <span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">Optionally, predicate this technique to</span>
+  <span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">only certain modes</span>
+  <span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">e.g.</span>
+  <span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">(when (eq major-mode 'cperl-mode) ...</span>
+  (number-to-string (org-current-line)))
+  (add-hook 'org-create-file-search-functions
+  'my/linenum)
+  </pre>
+  </div>
+
+  <p>
+  As indicated by the comments, this linking stragety can also predicate
+  on the major mode used for finer control. 
+  </p>
+  </div>
+  </div>
+
+  <div id="outline-container-sec-2" class="outline-2">
+  <h2 id="sec-2"><span class="section-number-2">2</span> Usage</h2>
+  <div class="outline-text-2" id="text-2">
+  <p>
+  Once setup is complete, simply follow along in the source code.  When
+  an issue or question comes up, hit <code class="verbatim">C-c r</code> and select the proper
+  template.  Fill in the details and complete the entry.  You will be
+  back in the source code buffer ready to consider the next issue.
+  </p>
+
+  <p>
+  After the review, you can easily sort the issues by priority.  Go to
+  the header for the issues and hit <code class="verbatim">C-c ^</code>.  A prompt will ask you how
+  to sort.  In this case, select priority and the list sorts correctly.
+  </p>
+
+  <p>
+  The TODO items make it easy for the author to track the progress
+  against the review tasks.
+  </p>
+  </div>
+  </div>
+
+  <div id="outline-container-sec-3" class="outline-2">
+  <h2 id="sec-3"><span class="section-number-2">3</span> Additional Considerations</h2>
+  <div class="outline-text-2" id="text-3">
+  <p>
+  The templates themselves could provide more information about the
+  given issues in the review.
+  </p>
+  </div>
+
+  <div id="outline-container-sec-3-1" class="outline-3">
+  <h3 id="sec-3-1"><span class="section-number-3">3.1</span> Reviewer Name</h3>
+  <div class="outline-text-3" id="text-3-1">
+  <p>
+  Adding a reviewer name to an item (as a property) will make it easy
+  for the code author to go back and clarify after a meeting. Tracking
+  ownership also lets the author know who should review the fix if
+  necessary.
+  </p>
+
+  <p>
+  The sorting features in org-mode also provides the ability to sort on
+  properties, so lumping together reviewers' comments should not be
+  difficult.
+  </p>
+  </div>
+  </div>
+
+  <div id="outline-container-sec-3-2" class="outline-3">
+  <h3 id="sec-3-2"><span class="section-number-3">3.2</span> Time</h3>
+  <div class="outline-text-3" id="text-3-2">
+  <p>
+  If you use and capture times, even more sorting can reflect the order
+  of items raised in the meeting. This would help as you read through
+  the code again to see the issues in that order.
+  </p>
+
+  <p>
+  Assigned deadlines also provide sorting methods. Items arranged by due
+  date could be another view of the task list.
+  </p>
+  </div>
+  </div>
+
+  <div id="outline-container-sec-3-3" class="outline-3">
+  <h3 id="sec-3-3"><span class="section-number-3">3.3</span> Tags</h3>
+  <div class="outline-text-3" id="text-3-3">
+  <p>
+  Certain features or bugs may align with a milestone. If this is
+  something to consider, then the capture templates could provide
+  tagging functionality. Later, the tags give a way to track sets of
+  tasks together and get a picture of the progress.
+  </p>
+  </div>
+  </div>
+  </div>
+  ]]></description>
+</item>
+
+
+<item>
+  <title>Not killing Emacs on Windows</title>
+  <link>http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/not-killing-emacs-on-windows.html</link>
+  <guid isPermaLink="false">http://bnbeckwith.com/~/work/projects/bnbeckwith.github.io/blog/not-killing-emacs-on-windows.html</guid>
+  <pubDate>Mon, 04 Jan 2010 00:00:00 -0500</pubDate>
+
+  <description><![CDATA[<p>
+  On windows, many people use the built-in server and <code class="verbatim">emacsclientw</code> to
+  make startup faster.  The basics for this are discussed <a href="http://emacs-fu.blogspot.com/2009/03/windows-and-daemons.html">here</a>.  I have
+  a slightly modified version that closes a buffer opened through the
+  server mode.  I often open up code through <code class="verbatim">emacsclientw</code>, edit, save
+  then close.  
+  </p>
+
+  <p>
+  The following code helps make this a more automatic process and give
+  the feel of opening the editor, editing and then closing through
+  normal keystrokes.
+  </p>
+
+  <div class="org-src-container">
+
+  <pre class="src src-elisp">(<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">bnb/exit</span> ()
+  (interactive)
+  <span style="color: #8e908c; font-style: italic;">;  </span><span style="color: #8e908c; font-style: italic;">Check for a server-buffer before closing the server-buffer</span>
+  (<span style="color: #718c00;">if</span> server-clients
+  (server-edit))
+  (make-frame-invisible nil t))
+  (global-set-key (kbd <span style="color: #3e999f;">"C-x C-c"</span>) 'bnb/exit)
+  </pre>
+  </div>
+
+  <p>
+  While that code is great, it does not stop me from clicking the <b>X</b> to
+  close emacs.  To ensure that this does not kill emacs, I advise the
+  <code class="verbatim">kill-emacs</code> function.  The advice wraps around the <code class="verbatim">kill-emacs</code>
+  function and only calls the underlying function if the
+  <code class="verbatim">bnb/really-kill-emacs</code> variable is set.  If the variable is still
+  <code class="verbatim">nil</code>, then the frame is simply hidden (turned invisible) through the
+  method above.  I then have a utility function to kill emacs if that
+  need ever arises.
+  </p>
+
+  <div class="org-src-container">
+
+  <pre class="src src-elisp">(<span style="color: #718c00;">defvar</span> <span style="color: #eab700;">bnb/really-kill-emacs</span> nil)
+  (<span style="color: #718c00;">defadvice</span> <span style="color: #f5871f;">kill-emacs</span> (around bnb/really-exit activate)
+  <span style="color: #8959a8;">"Only kill emacs if a prefix is set"</span>
+  (<span style="color: #718c00;">if</span> bnb/really-kill-emacs
+  ad-do-it)
+  (bnb/exit))
+
+  (<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">bnb/really-kill-emacs</span> ()
+  (interactive)
+  (setq bnb/really-kill-emacs t)
+  (kill-emacs))
+  </pre>
+  </div>
+
+  <p>
+  Together these help me have a fluid editing environment that is always
+  ready but out of my way.
+  </p>
+  ]]></description>
 </item>
 </channel>
 </rss>

@@ -1,56 +1,94 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <title>About</title>
+<!DOCTYPE html>
+<html>
+<head>
+<title>About</title>
+<!-- 2014-12-17 Wed 10:05 -->
+<meta  charset="utf-8">
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Benjamin Beckwith">
+<meta  name="description" content="About page"
+>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
 
-  
-  <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
-      </script>
-  <![endif]-->
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
 
 
-  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
-
 <body>
+<div id="preamble" class="status">
+<div class="nav">
+<a href="/" id="sitename">bnbeckwith</a>
+<div class="links">
+<ul>
+<li><a href="/code/" >Code</a></li>
+<li><a href="/tags.html" >Tags</a></li>
+<li><a href="/archive.html" >Archive</a></li>
+<li><a href="/about.html" >About</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="content">
+<h1 class="title">About</h1>
+<p>
+Welcome to the webhome of bnbeckwith (Benjamin Beckwith).
+</p>
 
-  <content>
-
-    <aside role="nav" class="nav">
-      <nav>
-        <h3 id="logo"><a id="sitename" href="/">bnbeckwith</a></h3>
-        <ul class="navbar-nav" id="navlinks">
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/tags">Tags</a></li>
-          <li id=""><a href="/archive">Archive</a></li><li><a href="/code/">Code</a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <main id="content-wrapper">
-      <div id="page-header">
-        <h1 id="content-title">About</h1>
-      </div>
-      
-      <article id="content"><section id="root"><p></p><p>Welcome to the webhome of bnbeckwith (Benjamin Beckwith).
-</p><p>This site is a blog intended to be a place where I can share tips and
+<p>
+This site is a blog intended to be a place where I can share tips and
 tools that I find interesting.  I intend to focus on many software
 packages such as Emacs, LaTeX, Perl and others.  My goal is to build
 ideas and techniques for me to remember and refine as well as make
 these available to others.
-</p><p></p><p></p><p></p><p></p></section></article>
-
-      
-      
-      
-      
-      
-    </main>
-  </content>
-  <footer>
-    © B.N.Beckwith 2014 | <a href="/rss.xml">RSS</a>
-  </footer>
-
-
-</body></html>
+</p>
+</div>
+<div id="postamble" class="status">
+</div><div id="footer">
+<p>© 2008-2014 Benjamin Beckwith</p>
+<a href="rss.xml" id="rss">rss</a>
+</div>
+</div>
+</body>
+</html>

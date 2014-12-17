@@ -1,75 +1,130 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <title>Org Mode for Code Reviews</title>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Org Mode for Code Reviews</title>
+<!-- 2014-12-17 Wed 10:05 -->
+<meta  charset="utf-8">
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Benjamin Beckwith">
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
 
-  
-  <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
-      </script>
-  <![endif]-->
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
 
 
-  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
-
 <body>
-
-  <content>
-
-    <aside role="nav" class="nav">
-      <nav>
-        <h3 id="logo"><a id="sitename" href="/">bnbeckwith</a></h3>
-        <ul class="navbar-nav" id="navlinks">
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/tags">Tags</a></li>
-          <li id=""><a href="/archive">Archive</a></li><li><a href="/code/">Code</a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <main id="content-wrapper">
-      <div id="page-header">
-        <h1 id="content-title">Org Mode for Code Reviews</h1>
-      </div>
-      
-      <article id="content"><section id="root"><p>Recently, I found myself needing a solution for tracking issues and
+<div id="preamble" class="status">
+<div class="nav">
+<a href="/" id="sitename">bnbeckwith</a>
+<div class="links">
+<ul>
+<li><a href="/code/" >Code</a></li>
+<li><a href="/tags.html" >Tags</a></li>
+<li><a href="/archive.html" >Archive</a></li>
+<li><a href="/about.html" >About</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Org Mode for Code Reviews</h1>
+<p>
+Recently, I found myself needing a solution for tracking issues and
 comments in source code during a review. Org mode makes this task much
 better and easier overall. 
-</p><p>First, let me explain how it is better. During a review, most comments
+</p>
+
+<p>
+First, let me explain how it is better. During a review, most comments
 focus on issues on particular line numbers.  This means that the code
 needs must have line numbers displayed. That way, everyone can be
 clear about the particular line for a given issue.  In emacs, this is
-easily done with 
-<verbatim>linum-mode</verbatim>. This completes the first
-<!-- 
- -->requirements of being able to view the code. 
-</p><p></p><p></p><p></p><section class="hsec2"><h2>Setup</h2><p>Now, a note-taker in the meeting faces the issue of tracking all of
+easily done with <code class="verbatim">linum-mode</code>. This completes the first
+requirements of being able to view the code. 
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Setup</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Now a note-taker in the meeting faces the issue of tracking all of
 the comments and issues given by the reviewers.  This can be a tedious
 task.  First, get the line with the issue, capture the issue and
 assign a priority.  All of this goes into a list for the author to
 consider when fixing the codebase.
-</p><p>Org-mode makes this task much easier with its ability to capture
+</p>
+
+<p>
+Org-mode makes this task much easier with its ability to capture
 issues quickly and with context.  With a keystroke, a scribe can more
 easily fill in the details given and assign a priority. The following
 code sets up some templates to use for the review.  The bugs have a
-priority and fall under the &quot;Issues&quot; heading while the questions get
-put under the &quot;Questions&quot; heading.
-</p><p></p><div class="highlight"><pre><span class="p">(</span><span class="nv">org-remember-insinuate</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">define-key</span> <span class="nv">global-map</span> <span class="s">&quot;\C-cr&quot;</span> <span class="ss">'org-remember</span><span class="p">)</span>
-<span class="p">(</span><span class="k">setq</span> <span class="nv">org-remember-templates</span>
-      <span class="o">'</span><span class="p">((</span><span class="s">&quot;Code Review High&quot;</span> <span class="nv">?h</span> <span class="s">&quot;* TODO [#A] %?\n  %i\n  %a&quot;</span> <span class="s">&quot;~/Review.org&quot;</span> <span class="s">&quot;Issues&quot;</span><span class="p">)</span>
-        <span class="p">(</span><span class="s">&quot;Code Review Medium&quot;</span> <span class="nv">?m</span> <span class="s">&quot;* TODO [#B] %?\n  %i\n  %a&quot;</span> <span class="s">&quot;~/Review.org&quot;</span> <span class="s">&quot;Issues&quot;</span><span class="p">)</span>
-        <span class="p">(</span><span class="s">&quot;Code Review Low&quot;</span> <span class="nv">?l</span> <span class="s">&quot;* TODO [#C] %?\n  %i\n  %a&quot;</span> <span class="s">&quot;~/Review.org&quot;</span> <span class="s">&quot;Issues&quot;</span><span class="p">)</span>
-        <span class="p">(</span><span class="s">&quot;Code Review Question&quot;</span> <span class="nv">??</span> <span class="s">&quot;* TODO %?\n  %i\n  %a&quot;</span> <span class="s">&quot;~/Review.org&quot;</span> <span class="s">&quot;Questions&quot;</span><span class="p">)))</span>
-</pre></div>
-<p>Note that I used 
-<verbatim>org-remember</verbatim> (instead of 
-<verbatim>org-capture</verbatim>) because my
-<!-- 
- -->coworkers are on emacs 23.2 so I had to be compatible wit the default
+priority and fall under the "Issues" heading while the questions get
+put under the "Questions" heading.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(org-remember-insinuate)
+(define-key global-map <span style="color: #3e999f;">"\C-cr"</span> 'org-remember)
+(setq org-remember-templates
+      '((<span style="color: #3e999f;">"Code Review High"</span> ?h <span style="color: #3e999f;">"* TODO [#A] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
+        (<span style="color: #3e999f;">"Code Review Medium"</span> ?m <span style="color: #3e999f;">"* TODO [#B] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
+        (<span style="color: #3e999f;">"Code Review Low"</span> ?l <span style="color: #3e999f;">"* TODO [#C] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
+        (<span style="color: #3e999f;">"Code Review Question"</span> ?? <span style="color: #3e999f;">"* TODO %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Questions"</span>)))
+</pre>
+</div>
+
+<p>
+Note that I used <code class="verbatim">org-remember</code> (instead of <code class="verbatim">org-capture</code>) because my
+coworkers are on emacs 23.2 so I had to be compatible wit the default
 version of org-mode for that emacs version. 
-</p><p>There is one additional sticking point to discuss for this
+</p>
+
+<p>
+There is one additional sticking point to discuss for this
 solution. The links produced are really a search string within the
 file. That means that if there are two lines with the same content,
 the link would find only the first occurrence of the line.  The main
@@ -79,68 +134,120 @@ feel that the issue is the same regardless of the line (if they are
 the same lines), so linking to one over the other is a minor
 detail. Or, you may feel that the exact line is the important item to
 capture and, in that case, you would need a line number.
-</p><p>There is a way to link using only line numbers.  Use the code shown
+</p>
+
+<p>
+There is a way to link using only line numbers.  Use the code shown
 below to create the file search string from the line number.
-</p><p></p><div class="highlight"><pre><span class="p">(</span><span class="nb">defun</span> <span class="nv">my/linenum</span><span class="p">()</span>
-  <span class="s">&quot;Use line number as the file linking item&quot;</span>
-<span class="c1">;; Optionally, predicate this technique to</span>
-<span class="c1">;; only certain modes</span>
-<span class="c1">;; e.g.</span>
-<span class="c1">;; (when (eq major-mode 'cperl-mode) ...</span>
-  <span class="p">(</span><span class="nv">number-to-string</span> <span class="p">(</span><span class="nv">org-current-line</span><span class="p">)))</span>
-<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">'org-create-file-search-functions</span>
-          <span class="ss">'my/linenum</span><span class="p">)</span>
-</pre></div>
-<p>As indicated by the comments, this linking stragety can also predicate
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">my/linenum</span>()
+  <span style="color: #8959a8;">"Use line number as the file linking item"</span>
+<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">Optionally, predicate this technique to</span>
+<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">only certain modes</span>
+<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">e.g.</span>
+<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">(when (eq major-mode 'cperl-mode) ...</span>
+  (number-to-string (org-current-line)))
+(add-hook 'org-create-file-search-functions
+          'my/linenum)
+</pre>
+</div>
+
+<p>
+As indicated by the comments, this linking stragety can also predicate
 on the major mode used for finer control. 
-</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>Usage</h2><p>Once setup is complete, simply follow along in the source code.  When
-an issue or question comes up, hit 
-<verbatim>C-c r</verbatim> and select the proper
-<!-- 
- -->template.  Fill in the details and complete the entry.  You will be
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Usage</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Once setup is complete, simply follow along in the source code.  When
+an issue or question comes up, hit <code class="verbatim">C-c r</code> and select the proper
+template.  Fill in the details and complete the entry.  You will be
 back in the source code buffer ready to consider the next issue.
-</p><p>After the review, you can easily sort the issues by priority.  Go to
-the header for the issues and hit 
-<verbatim>C-c ^</verbatim>.  A prompt will ask you how
-<!-- 
- -->to sort.  In this case, select priority and the list sorts correctly.
-</p><p>The TODO items make it easy for the author to track the progress
+</p>
+
+<p>
+After the review, you can easily sort the issues by priority.  Go to
+the header for the issues and hit <code class="verbatim">C-c ^</code>.  A prompt will ask you how
+to sort.  In this case, select priority and the list sorts correctly.
+</p>
+
+<p>
+The TODO items make it easy for the author to track the progress
 against the review tasks.
-</p><p></p><p></p><p></p><p></p></section><section class="hsec2"><h2>Additional Considerations</h2><p>The templates themselves could provide more information about the
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Additional Considerations</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The templates themselves could provide more information about the
 given issues in the review.
-</p><p></p><p></p><section class="hsec3"><h3>Reviewer Name</h3><p>Adding a reviewer name to an item (as a property) will make it easy
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Reviewer Name</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Adding a reviewer name to an item (as a property) will make it easy
 for the code author to go back and clarify after a meeting. Tracking
 ownership also lets the author know who should review the fix if
 necessary.
-</p><p>The sorting features in org-mode also provides the ability to sort on
+</p>
+
+<p>
+The sorting features in org-mode also provides the ability to sort on
 properties, so lumping together reviewers' comments should not be
 difficult.
-</p><p></p><p></p><p></p></section><section class="hsec3"><h3>Time</h3><p>If you use and capture times, even more sorting can reflect the order
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Time</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+If you use and capture times, even more sorting can reflect the order
 of items raised in the meeting. This would help as you read through
 the code again to see the issues in that order.
-</p><p>Assigned deadlines also provide sorting methods. Items arranged by due
+</p>
+
+<p>
+Assigned deadlines also provide sorting methods. Items arranged by due
 date could be another view of the task list.
-</p><p></p><p></p><p></p></section><section class="hsec3"><h3>Tags</h3><p>Certain features or bugs may align with a milestone. If this is
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Tags</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Certain features or bugs may align with a milestone. If this is
 something to consider, then the capture templates could provide
 tagging functionality. Later, the tags give a way to track sets of
 tasks together and get a picture of the progress.
-</p></section></section></section></article>
-
-      <div id="blogmeta">
-        This entry was published on <span class="published longdate">2011.05.23</span>, filed under
-        <ul class="tag-list">
-          <li><a href="/tags/elisp/">elisp</a></li><li><a href="/tags/emacs/">emacs</a></li><li><a href="/tags/org-mode/">org-mode</a></li>
-        </ul>
-      </div>
-      
-      
-      
-      
-    </main>
-  </content>
-  <footer>
-    © B.N.Beckwith 2014 | <a href="/rss.xml">RSS</a>
-  </footer>
-
-
-</body></html>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p>Published on Tuesday, May 24, 2011.
+ Posted in: <a href=/tags.html#elisp>elisp</a>, <a href=/tags.html#emacs>emacs</a>, <a href=/tags.html#org-mode>org-mode</a>.
+</p></div><div id="footer">
+<p>© 2008-2014 Benjamin Beckwith</p>
+<a href="rss.xml" id="rss">rss</a>
+</div>
+</div>
+</body>
+</html>

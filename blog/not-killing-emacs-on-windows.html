@@ -1,107 +1,139 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <title>Not killing Emacs on Windows</title>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Not killing Emacs on Windows</title>
+<!-- 2014-12-17 Wed 10:05 -->
+<meta  charset="utf-8">
+<meta  name="generator" content="Org-mode">
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
 
-  
-  <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
-      </script>
-  <![endif]-->
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
 
 
-  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
-
 <body>
+<div id="preamble" class="status">
+<div class="nav">
+<a href="/" id="sitename">bnbeckwith</a>
+<div class="links">
+<ul>
+<li><a href="/code/" >Code</a></li>
+<li><a href="/tags.html" >Tags</a></li>
+<li><a href="/archive.html" >Archive</a></li>
+<li><a href="/about.html" >About</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Not killing Emacs on Windows</h1>
+<p>
+On windows, many people use the built-in server and <code class="verbatim">emacsclientw</code> to
+make startup faster.  The basics for this are discussed <a href="http://emacs-fu.blogspot.com/2009/03/windows-and-daemons.html">here</a>.  I have
+a slightly modified version that closes a buffer opened through the
+server mode.  I often open up code through <code class="verbatim">emacsclientw</code>, edit, save
+then close.  
+</p>
 
-  <content>
-
-    <aside role="nav" class="nav">
-      <nav>
-        <h3 id="logo"><a id="sitename" href="/">bnbeckwith</a></h3>
-        <ul class="navbar-nav" id="navlinks">
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/tags">Tags</a></li>
-          <li id=""><a href="/archive">Archive</a></li><li><a href="/code/">Code</a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <main id="content-wrapper">
-      <div id="page-header">
-        <h1 id="content-title">Not killing Emacs on Windows</h1>
-      </div>
-      
-      <article id="content"><section id="root"><p>On windows, many people use the built-in server and 
-<verbatim>emacsclientw</verbatim> to
-<!-- 
- -->make startup faster.  The basics for this are discussed 
-<a href="http://emacs-fu.blogspot.com/2009/03/windows-and-daemons.html">here</a>.  I have
-<!-- 
- -->a slightly modified version that closes a buffer opened through the
-server mode.  I often open up code through 
-<verbatim>emacsclientw</verbatim>, edit, save
-<!-- 
- -->then close.  
-</p><p>The following code helps make this a more automatic process and give
+<p>
+The following code helps make this a more automatic process and give
 the feel of opening the editor, editing and then closing through
 normal keystrokes.
-</p><p></p><div class="highlight"><pre><span class="p">(</span><span class="nb">defun</span> <span class="nv">bnb/exit</span> <span class="p">()</span>
-  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
-<span class="c1">;  Check for a server-buffer before closing the server-buffer</span>
-  <span class="p">(</span><span class="k">if</span> <span class="nv">server-clients</span>
-      <span class="p">(</span><span class="nv">server-edit</span><span class="p">))</span>
-  <span class="p">(</span><span class="nv">make-frame-invisible</span> <span class="no">nil</span> <span class="no">t</span><span class="p">))</span>
-<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-x C-c&quot;</span><span class="p">)</span> <span class="ss">'bnb/exit</span><span class="p">)</span>
-</pre></div>
-<p>While that code is great, it does not stop me from clicking the 
-<strong>X
-</strong> to
-<!-- 
- -->close emacs.  To ensure that this does not kill emacs, I advise the
+</p>
 
-<verbatim>kill-emacs</verbatim> function.  The advice wraps around the 
-<verbatim>kill-emacs</verbatim>function and only calls the underlying function if the
+<div class="org-src-container">
 
-<verbatim>bnb/really-kill-emacs</verbatim> variable is set.  If the variable is still
-<!-- 
- -->
-<verbatim>nil</verbatim>, then the frame is simply hidden (turned invisible) through the
-<!-- 
- -->method above.  I then have a utility function to kill emacs if that
+<pre class="src src-elisp">(<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">bnb/exit</span> ()
+  (interactive)
+<span style="color: #8e908c; font-style: italic;">;  </span><span style="color: #8e908c; font-style: italic;">Check for a server-buffer before closing the server-buffer</span>
+  (<span style="color: #718c00;">if</span> server-clients
+      (server-edit))
+  (make-frame-invisible nil t))
+(global-set-key (kbd <span style="color: #3e999f;">"C-x C-c"</span>) 'bnb/exit)
+</pre>
+</div>
+
+<p>
+While that code is great, it does not stop me from clicking the <b>X</b> to
+close emacs.  To ensure that this does not kill emacs, I advise the
+<code class="verbatim">kill-emacs</code> function.  The advice wraps around the <code class="verbatim">kill-emacs</code>
+function and only calls the underlying function if the
+<code class="verbatim">bnb/really-kill-emacs</code> variable is set.  If the variable is still
+<code class="verbatim">nil</code>, then the frame is simply hidden (turned invisible) through the
+method above.  I then have a utility function to kill emacs if that
 need ever arises.
-</p><p></p><div class="highlight"><pre><span class="p">(</span><span class="nb">defvar</span> <span class="nv">bnb/really-kill-emacs</span> <span class="no">nil</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">defadvice</span> <span class="nv">kill-emacs</span> <span class="p">(</span><span class="nv">around</span> <span class="nv">bnb/really-exit</span> <span class="nv">activate</span><span class="p">)</span>
-  <span class="s">&quot;Only kill emacs if a prefix is set&quot;</span>
-  <span class="p">(</span><span class="k">if</span> <span class="nv">bnb/really-kill-emacs</span>
-      <span class="nv">ad-do-it</span><span class="p">)</span>
-    <span class="p">(</span><span class="nv">bnb/exit</span><span class="p">))</span>
+</p>
 
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">bnb/really-kill-emacs</span> <span class="p">()</span>
-  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">setq</span> <span class="nv">bnb/really-kill-emacs</span> <span class="no">t</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">kill-emacs</span><span class="p">))</span>
-</pre></div>
-<p>Together these help me have a fluid editing environment that is always
+<div class="org-src-container">
+
+<pre class="src src-elisp">(<span style="color: #718c00;">defvar</span> <span style="color: #eab700;">bnb/really-kill-emacs</span> nil)
+(<span style="color: #718c00;">defadvice</span> <span style="color: #f5871f;">kill-emacs</span> (around bnb/really-exit activate)
+  <span style="color: #8959a8;">"Only kill emacs if a prefix is set"</span>
+  (<span style="color: #718c00;">if</span> bnb/really-kill-emacs
+      ad-do-it)
+    (bnb/exit))
+
+(<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">bnb/really-kill-emacs</span> ()
+  (interactive)
+  (setq bnb/really-kill-emacs t)
+  (kill-emacs))
+</pre>
+</div>
+
+<p>
+Together these help me have a fluid editing environment that is always
 ready but out of my way.
-</p><p></p><p></p><p></p><p></p><p></p></section></article>
-
-      <div id="blogmeta">
-        This entry was published on <span class="published longdate">2010.01.03</span>, filed under
-        <ul class="tag-list">
-          <li><a href="/tags/elisp/">Elisp</a></li><li><a href="/tags/emacs/">Emacs</a></li><li><a href="/tags/programming/">Programming</a></li><li><a href="/tags/tools/">Tools</a></li>
-        </ul>
-      </div>
-      
-      
-      
-      
-    </main>
-  </content>
-  <footer>
-    © B.N.Beckwith 2014 | <a href="/rss.xml">RSS</a>
-  </footer>
-
-
-</body></html>
+</p>
+</div>
+<div id="postamble" class="status">
+<p>Published on Monday, January 04, 2010.
+ Posted in: <a href=/tags.html#elisp>elisp</a>, <a href=/tags.html#emacs>emacs</a>, <a href=/tags.html#programming>programming</a>, <a href=/tags.html#tools>tools</a>.
+</p></div><div id="footer">
+<p>© 2008-2014 Benjamin Beckwith</p>
+<a href="rss.xml" id="rss">rss</a>
+</div>
+</div>
+</body>
+</html>
