@@ -14,8 +14,8 @@
   <link>http://bnbeckwith.com/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Wed, 17 Dec 2014 10:06:00 -0500</pubDate>
-  <lastBuildDate>Wed, 17 Dec 2014 10:06:00 -0500</lastBuildDate>
+  <pubDate>Wed, 17 Dec 2014 13:34:07 -0500</pubDate>
+  <lastBuildDate>Wed, 17 Dec 2014 13:34:07 -0500</lastBuildDate>
   <generator>Emacs 24.4 Org-mode 8.2.10</generator>
   <webMaster>bnbeckwith@gmail.com (Benjamin Beckwith)</webMaster>
   <image>
@@ -42,7 +42,7 @@
     </div>
     </div>
     <p>
-    I just started using <code class="code">tikz</code> for diagrams in technical
+    I just started using <code class="verbatim">tikz</code> for diagrams in technical
     documentation. It would export fine and look great (both pdf and
     html), but previewing in the Emacs buffer wasn't working at all. This
     I had to fix.
@@ -85,8 +85,8 @@
     <h2 id="sec-2"><span class="section-number-2">2</span> Installing Imagemagick</h2>
     <div class="outline-text-2" id="text-2">
     <p>
-    One of the key insights is that <code class="code">dvipng</code> does not support <code class="code">tikz</code>,
-    but <code class="code">imagemagick</code> does. Or, more correctly, the <code class="verbatim">convert.exe</code>
+    One of the key insights is that <code class="verbatim">dvipng</code> does not support <code class="verbatim">tikz</code>,
+    but <code class="verbatim">imagemagick</code> does. Or, more correctly, the <code class="verbatim">convert.exe</code>
     program will convert the <code class="verbatim">pdf</code> output into a regular image file.
     </p>
 
@@ -110,8 +110,8 @@
     </p>
 
     <p>
-    The first part sets up <code class="code">tikz</code> as one of the default packages for
-    LaTeX processing. Then, enable the <code class="code">tikzpicture</code> environment for previewing.
+    The first part sets up <code class="verbatim">tikz</code> as one of the default packages for
+    LaTeX processing. Then, enable the <code class="verbatim">tikzpicture</code> environment for previewing.
     </p>
 
     <div class="org-src-container">
@@ -131,9 +131,9 @@
     </p>
 
     <p>
-    The two options for images are <code class="code">dvipng</code> or <code class="code">imagemagick</code>.  It turns
-    out that the former cannot handle <code class="code">tikz</code>, so we use
-    <code class="code">imagemagick</code>. Setting the default program here is simple too.
+    The two options for images are <code class="verbatim">dvipng</code> or <code class="verbatim">imagemagick</code>.  It turns
+    out that the former cannot handle <code class="verbatim">tikz</code>, so we use
+    <code class="verbatim">imagemagick</code>. Setting the default program here is simple too.
     </p>
 
     <div class="org-src-container">
@@ -143,8 +143,8 @@
     </div>
 
     <p>
-    After you complete these steps, a simple <code class="verbatim">C-c C-x C-l</code> will preview
-    the sections. And a <code class="verbatim">C-c C-c</code> will turn them back to the source
+    After you complete these steps, a simple <code class="code">C-c C-x C-l</code> will preview
+    the sections. And a <code class="code">C-c C-c</code> will turn them back to the source
     text.
     </p>
     </div>
@@ -192,8 +192,8 @@
   <h2 id="sec-1"><span class="section-number-2">1</span> Setup the export</h2>
   <div class="outline-text-2" id="text-1">
   <p>
-  The export step is really quite easy.  Just do a <code class="verbatim">C-c C-e</code> followed
-  by <code class="verbatim">h H</code> for HTML export into a new buffer. The nice touch is that
+  The export step is really quite easy.  Just do a <code class="code">C-c C-e</code> followed
+  by <code class="code">h H</code> for HTML export into a new buffer. The nice touch is that
   this is also added to the clipboard.
   </p>
 
@@ -259,14 +259,14 @@
 
 
   <p>
-  To add to Outlook, hit <code class="verbatim">Alt-F11</code> to bring up the VBA editor.  In
+  To add to Outlook, hit <code class="code">Alt-F11</code> to bring up the VBA editor.  In
   there, I just add a new module and copy in the function from above.
   </p>
 
   <p>
   This function only makes sense in context of an email. To enable it
   there, I add it to the quick access toolbar at the top. Press
-  <code class="verbatim">Alt-S-m</code> to open up a new email.  Then select the little down arrow
+  <code class="code">Alt-S-m</code> to open up a new email.  Then select the little down arrow
   for "Customize Quick Access Toolbar" and select "More Commands".
   </p>
 
@@ -310,7 +310,7 @@
   <p>
   The other bonus (or maybe the main point) is that now you can also
   use a built-in shorcut for the Quick Access Toolbar commands to run
-  this one. By pressing <code class="verbatim">Alt</code>, you can see a number by your command. 
+  this one. By pressing <code class="code">Alt</code>, you can see a number by your command. 
   </p>
 
 
@@ -321,7 +321,7 @@
   </div>
 
   <p>
-  For me, it is <code class="verbatim">1</code> so <code class="verbatim">Alt-1</code> will run this command for me. I can
+  For me, it is 1 so <code class="code">Alt-1</code> will run this command for me. I can
   keep my meetings organized in Emacs and still use Outlook for
   communication.
   </p>
@@ -380,7 +380,7 @@
   </p>
 
   <p>
-  It does. And it has a default global key, <code class="verbatim">M-`</code>, which runs
+  It does. And it has a default global key, <code class="code">M-`</code>, which runs
   <code class="verbatim">tmm-menubar</code>. From there, the interface is easy enough to
   understand (it also tells you how to interact). 
   </p>
@@ -514,14 +514,14 @@
   <div class="outline-text-2" id="text-2">
   <p>
   Once setup is complete, simply follow along in the source code.  When
-  an issue or question comes up, hit <code class="verbatim">C-c r</code> and select the proper
+  an issue or question comes up, hit <code class="code">C-c r</code> and select the proper
   template.  Fill in the details and complete the entry.  You will be
   back in the source code buffer ready to consider the next issue.
   </p>
 
   <p>
   After the review, you can easily sort the issues by priority.  Go to
-  the header for the issues and hit <code class="verbatim">C-c ^</code>.  A prompt will ask you how
+  the header for the issues and hit <code class="code">C-c ^</code>.  A prompt will ask you how
   to sort.  In this case, select priority and the list sorts correctly.
   </p>
 

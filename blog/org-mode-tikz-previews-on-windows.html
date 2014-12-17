@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Enabling tikz previews in org-mode</title>
-<!-- 2014-12-17 Wed 10:05 -->
+<!-- 2014-12-17 Wed 13:34 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Benjamin Beckwith">
@@ -71,7 +71,7 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Enabling tikz previews in org-mode</h1>
 <p>
-I just started using <code class="code">tikz</code> for diagrams in technical
+I just started using <code class="verbatim">tikz</code> for diagrams in technical
 documentation. It would export fine and look great (both pdf and
 html), but previewing in the Emacs buffer wasn't working at all. This
 I had to fix.
@@ -114,8 +114,8 @@ Add this location to your path ensuring that all programs can find <code class="
 <h2 id="sec-2">Installing Imagemagick</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-One of the key insights is that <code class="code">dvipng</code> does not support <code class="code">tikz</code>,
-but <code class="code">imagemagick</code> does. Or, more correctly, the <code class="verbatim">convert.exe</code>
+One of the key insights is that <code class="verbatim">dvipng</code> does not support <code class="verbatim">tikz</code>,
+but <code class="verbatim">imagemagick</code> does. Or, more correctly, the <code class="verbatim">convert.exe</code>
 program will convert the <code class="verbatim">pdf</code> output into a regular image file.
 </p>
 
@@ -139,8 +139,8 @@ set, but easy settings to make.
 </p>
 
 <p>
-The first part sets up <code class="code">tikz</code> as one of the default packages for
-LaTeX processing. Then, enable the <code class="code">tikzpicture</code> environment for previewing.
+The first part sets up <code class="verbatim">tikz</code> as one of the default packages for
+LaTeX processing. Then, enable the <code class="verbatim">tikzpicture</code> environment for previewing.
 </p>
 
 <div class="org-src-container">
@@ -160,9 +160,9 @@ into an image format.
 </p>
 
 <p>
-The two options for images are <code class="code">dvipng</code> or <code class="code">imagemagick</code>.  It turns
-out that the former cannot handle <code class="code">tikz</code>, so we use
-<code class="code">imagemagick</code>. Setting the default program here is simple too.
+The two options for images are <code class="verbatim">dvipng</code> or <code class="verbatim">imagemagick</code>.  It turns
+out that the former cannot handle <code class="verbatim">tikz</code>, so we use
+<code class="verbatim">imagemagick</code>. Setting the default program here is simple too.
 </p>
 
 <div class="org-src-container">
@@ -172,8 +172,8 @@ out that the former cannot handle <code class="code">tikz</code>, so we use
 </div>
 
 <p>
-After you complete these steps, a simple <code class="verbatim">C-c C-x C-l</code> will preview
-the sections. And a <code class="verbatim">C-c C-c</code> will turn them back to the source
+After you complete these steps, a simple <code class="code">C-c C-x C-l</code> will preview
+the sections. And a <code class="code">C-c C-c</code> will turn them back to the source
 text.
 </p>
 </div>
