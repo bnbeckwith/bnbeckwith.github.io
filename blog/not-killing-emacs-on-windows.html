@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Not killing Emacs on Windows</title>
-<!-- 2014-12-17 Wed 13:34 -->
+<!-- 2015-05-12 Tue 11:45 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
@@ -85,13 +85,13 @@ normal keystrokes.
 
 <div class="org-src-container">
 
-<pre class="src src-elisp">(<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">bnb/exit</span> ()
+<pre class="src src-elisp">(<span style="color: #D1FA71;">defun</span> <span style="color: #96D9F1;">bnb/exit</span> ()
   (interactive)
-<span style="color: #8e908c; font-style: italic;">;  </span><span style="color: #8e908c; font-style: italic;">Check for a server-buffer before closing the server-buffer</span>
-  (<span style="color: #718c00;">if</span> server-clients
+<span style="color: #8F8F8F; font-style: italic;">;  </span><span style="color: #8F8F8F; font-style: italic;">Check for a server-buffer before closing the server-buffer</span>
+  (<span style="color: #D1FA71;">if</span> server-clients
       (server-edit))
   (make-frame-invisible nil t))
-(global-set-key (kbd <span style="color: #3e999f;">"C-x C-c"</span>) 'bnb/exit)
+(global-set-key (kbd <span style="color: #F6DC69;">"C-x C-c"</span>) 'bnb/exit)
 </pre>
 </div>
 
@@ -108,14 +108,14 @@ need ever arises.
 
 <div class="org-src-container">
 
-<pre class="src src-elisp">(<span style="color: #718c00;">defvar</span> <span style="color: #eab700;">bnb/really-kill-emacs</span> nil)
-(<span style="color: #718c00;">defadvice</span> <span style="color: #f5871f;">kill-emacs</span> (around bnb/really-exit activate)
-  <span style="color: #8959a8;">"Only kill emacs if a prefix is set"</span>
-  (<span style="color: #718c00;">if</span> bnb/really-kill-emacs
+<pre class="src src-elisp">(<span style="color: #D1FA71;">defvar</span> <span style="color: #96D9F1;">bnb/really-kill-emacs</span> nil)
+(<span style="color: #D1FA71;">defadvice</span> <span style="color: #96D9F1;">kill-emacs</span> (around bnb/really-exit activate)
+  <span style="color: #F6DC69;">"Only kill emacs if a prefix is set"</span>
+  (<span style="color: #D1FA71;">if</span> bnb/really-kill-emacs
       ad-do-it)
     (bnb/exit))
 
-(<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">bnb/really-kill-emacs</span> ()
+(<span style="color: #D1FA71;">defun</span> <span style="color: #96D9F1;">bnb/really-kill-emacs</span> ()
   (interactive)
   (setq bnb/really-kill-emacs t)
   (kill-emacs))

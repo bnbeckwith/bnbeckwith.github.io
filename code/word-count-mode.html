@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Word-count Mode</title>
-<!-- 2014-12-17 Wed 13:34 -->
+<!-- 2015-05-12 Tue 11:45 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Benjamin Beckwith">
@@ -107,11 +107,11 @@ Use the following code to add it to emacs.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">Supply the path to the mode repository</span>
-(add-to-list 'load-path <span style="color: #3e999f;">"location/of/wc-mode"</span>)
-(<span style="color: #718c00;">require</span> '<span style="color: #4271ae;">wc-mode</span>)
-<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">(Optionally) setup a global key</span>
-(global-set-key <span style="color: #3e999f;">"\C-cw"</span> 'wc-mode)
+<pre class="src src-elisp"><span style="color: #8F8F8F; font-style: italic;">;; </span><span style="color: #8F8F8F; font-style: italic;">Supply the path to the mode repository</span>
+(add-to-list 'load-path <span style="color: #F6DC69;">"location/of/wc-mode"</span>)
+(<span style="color: #D1FA71;">require</span> '<span style="color: #FAB1AB;">wc-mode</span>)
+<span style="color: #8F8F8F; font-style: italic;">;; </span><span style="color: #8F8F8F; font-style: italic;">(Optionally) setup a global key</span>
+(global-set-key <span style="color: #F6DC69;">"\C-cw"</span> 'wc-mode)
 </pre>
 </div>
 
@@ -156,28 +156,28 @@ the following keymap.
 <col  class="left">
 </colgroup>
 <thead>
-<tr>
+<tr class="tr-top">
 <th scope="col" class="left">Key</th>
 <th scope="col" class="left">Function</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="tr-odd">
 <td class="left"><code class="verbatim">C-c C-w w</code></td>
 <td class="left">Set word goal</td>
 </tr>
 
-<tr>
+<tr class="tr-even">
 <td class="left"><code class="verbatim">C-c C-w l</code></td>
 <td class="left">Set line goal</td>
 </tr>
 
-<tr>
+<tr class="tr-odd">
 <td class="left"><code class="verbatim">C-c C-w a</code></td>
 <td class="left">Set character goal</td>
 </tr>
 
-<tr>
+<tr class="tr-even">
 <td class="left"><code class="verbatim">C-c C-w c</code></td>
 <td class="left">Do a 'wc' on the buffer</td>
 </tr>
@@ -217,68 +217,68 @@ format-codes used.
 <col  class="left">
 </colgroup>
 <thead>
-<tr>
+<tr class="tr-top">
 <th scope="col" class="left">Format Code</th>
 <th scope="col" class="left">What is displayed</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="tr-odd">
 <td class="left"><code class="verbatim">%W</code></td>
 <td class="left">Original word count (before changes)</td>
 </tr>
 
-<tr>
+<tr class="tr-even">
 <td class="left"><code class="verbatim">%L</code></td>
 <td class="left">Original line count</td>
 </tr>
 
-<tr>
+<tr class="tr-odd">
 <td class="left"><code class="verbatim">%C</code></td>
 <td class="left">Original character count</td>
 </tr>
 
-<tr>
+<tr class="tr-even">
 <td class="left"><code class="verbatim">%w</code></td>
 <td class="left">Change in words</td>
 </tr>
 
-<tr>
+<tr class="tr-odd">
 <td class="left"><code class="verbatim">%l</code></td>
 <td class="left">Change in lines</td>
 </tr>
 
-<tr>
+<tr class="tr-even">
 <td class="left"><code class="verbatim">%c</code></td>
 <td class="left">Change in characters</td>
 </tr>
 
-<tr>
+<tr class="tr-odd">
 <td class="left"><code class="verbatim">%gc</code></td>
 <td class="left">Character change goal</td>
 </tr>
 
-<tr>
+<tr class="tr-even">
 <td class="left"><code class="verbatim">%gl</code></td>
 <td class="left">Line change goal</td>
 </tr>
 
-<tr>
+<tr class="tr-odd">
 <td class="left"><code class="verbatim">%gw</code></td>
 <td class="left">Word change goal</td>
 </tr>
 
-<tr>
+<tr class="tr-even">
 <td class="left"><code class="verbatim">%tw</code></td>
 <td class="left">Total words in buffer</td>
 </tr>
 
-<tr>
+<tr class="tr-odd">
 <td class="left"><code class="verbatim">%tl</code></td>
 <td class="left">Total lines in buffer</td>
 </tr>
 
-<tr>
+<tr class="tr-even">
 <td class="left"><code class="verbatim">%tc</code></td>
 <td class="left">Total characters in buffer</td>
 </tr>

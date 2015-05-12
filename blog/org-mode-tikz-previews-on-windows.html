@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Enabling tikz previews in org-mode</title>
-<!-- 2014-12-17 Wed 13:34 -->
+<!-- 2015-05-12 Tue 11:45 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Benjamin Beckwith">
@@ -146,10 +146,10 @@ LaTeX processing. Then, enable the <code class="verbatim">tikzpicture</code> env
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(add-to-list 'org-latex-packages-alist
-             '(<span style="color: #3e999f;">""</span> <span style="color: #3e999f;">"tikz"</span> t))
+             '(<span style="color: #F6DC69;">""</span> <span style="color: #F6DC69;">"tikz"</span> t))
 
-(eval-after-load <span style="color: #3e999f;">"preview"</span>
-  '(add-to-list 'preview-default-preamble <span style="color: #3e999f;">"\\PreviewEnvironment{tikzpicture}"</span> t))
+(eval-after-load <span style="color: #F6DC69;">"preview"</span>
+  '(add-to-list 'preview-default-preamble <span style="color: #F6DC69;">"\\PreviewEnvironment{tikzpicture}"</span> t))
 </pre>
 </div>
 

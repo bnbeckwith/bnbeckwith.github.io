@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>On Documentation in Emacs</title>
+<!-- 2015-05-12 Tue 11:45 -->
+<meta  charset="utf-8">
+<meta  name="generator" content="Org-mode">
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="nav">
+<a href="/" id="sitename">bnbeckwith</a>
+<div class="links">
+<ul>
+<li><a href="/code/" >Code</a></li>
+<li><a href="/tags.html" >Tags</a></li>
+<li><a href="/archive.html" >Archive</a></li>
+<li><a href="/about.html" >About</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="content">
+<h1 class="title">On Documentation in Emacs</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Built-in Documentation</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Emacs boasts built-in documentation.  What does it mean to be
+built-in?  In this case, the documentation is tightly coupled with
+the code at a function granularity.  This means that every time a
+function changes, the opportunity to update documentation arises.
+</p>
+
+<blockquote>
+<p>
+Ink is better than the best memory.   &#x2013; Chinese proverb 
+</p>
+</blockquote>
+
+<p>
+This method facilitates up-to-date documentation for function
+specifics.  But there are other types of documentation necessary.
+Categories of functionality, frequently used sets, or even
+user-defined are all ways to look at classes of commands.
+</p>
+
+<p>
+How does a user learn what is available?  For me, it is exploration.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Starting a path</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Another engineer gave the following challenge: How to open a file
+into a new window (splitting) with <code class="verbatim">C-x C-f</code>.
+</p>
+
+<p>
+Immediately, I knew that I would have to check the full feature set
+of <code class="verbatim">find-file</code> (usually bound to <code class="verbatim">C-x C-f</code>).  Would there be an
+extra argument supplied by <code class="verbatim">C-u</code>? Or maybe a function wrapper was in
+order?  I was also excited about the possibility of sharing how
+functions can be <i>advised</i> to perform additional tasks.  Or maybe
+this is something that would fit into function hooks.
+</p>
+
+<p>
+What I knew for sure is that the path started with <code class="verbatim">C-x C-f</code>.  A
+quick trip to <code class="verbatim">C-h k</code> had be reading the right documentation
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Taking a stroll</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Reading the documentation yielded nothing readily availble built
+into <code class="verbatim">find-file</code>.
+</p>
+
+<p>
+What I do next is quickly scan the help text for any hyperlinks to
+additional documentation or files.  I skipped Tramp as that wasn't
+what I wanted.  I also skipped the links to <code class="verbatim">file-file-wildcards</code>
+and <code class="verbatim">find-file-literally</code> since they also seemed to be of little
+use.
+</p>
+
+<p>
+The only other link is to <code class="verbatim">files.el</code>.  Naturally, I took a
+peek. Open source always prides itself on the ability to share the
+implementation details.
+</p>
+
+<p>
+Initially, I was looking to see how hard it would be to wrap
+find-files to split the window. I was then going to choose between
+writing a wrapper to rebind to <code class="verbatim">C-x C-f</code> or advising <code class="verbatim">find-files</code>.
+</p>
+
+<p>
+Neither solution was necessary. Following <code class="verbatim">find-files</code> only a
+half-page down was <code class="verbatim">find-file-other-window</code>.  
+</p>
+
+<p>
+Reading the documentation string indicated that this was <i>exactly</i>
+the function I needed.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Finding Bindings</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+With my function in hand, all I had to do now was find any default
+bindings.  If none existed, then I would have some decisions to
+make.
+</p>
+
+<p>
+Again using the built-in documentation via <code class="verbatim">C-h C-f</code>, I found that
+it was in fact already bound.  <code class="verbatim">C-x 4 C-f</code> or <code class="verbatim">C-x 4 f</code> will open a
+file in the other window splitting first if necessary.
+</p>
+
+<p>
+In this case, the dynamic built-in documentation presented me with
+existing options.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Alternate paths</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+I'm always interested if there is more on the topic.  Once I had my
+function name, the know-it-all Google provided me with additional
+commentary on the function.
+</p>
+
+<p>
+In the Emacs manual, section 18.2 talks of Visiting Files.  Here is
+where I found my category of alike functions.  Now I know how to
+quickly open a file read-only, in a different window, closing a
+buffer first or even in a separate frame.
+</p>
+
+<p>
+I also know it is in my included Emacs manual through <code class="verbatim">info</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Making a Map</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+This is positive story with a desired outcome. I wonder, though, how
+many new users would be able to do the same. I think they would find
+it difficult.
+</p>
+
+<p>
+My next thoughts are how to enable them to find similar paths for
+their issues.  What skills do they need?  What trailheads can I give
+them? How can I help them from feeling lost? 
+</p>
+
+<p>
+What paths will they take?
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p>Published on Monday, May 11, 2015.
+ Posted in: <a href=/tags.html#emacs>emacs</a>.
+</p></div><div id="footer">
+<p>© 2008-2014 Benjamin Beckwith</p>
+<a href="rss.xml" id="rss">rss</a>
+</div>
+</div>
+</body>
+</html>

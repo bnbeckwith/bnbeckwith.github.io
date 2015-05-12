@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Org Mode for Code Reviews</title>
-<!-- 2014-12-17 Wed 13:34 -->
+<!-- 2015-05-12 Tue 11:45 -->
 <meta  charset="utf-8">
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Benjamin Beckwith">
@@ -108,12 +108,12 @@ put under the "Questions" heading.
 <div class="org-src-container">
 
 <pre class="src src-elisp">(org-remember-insinuate)
-(define-key global-map <span style="color: #3e999f;">"\C-cr"</span> 'org-remember)
+(define-key global-map <span style="color: #F6DC69;">"\C-cr"</span> 'org-remember)
 (setq org-remember-templates
-      '((<span style="color: #3e999f;">"Code Review High"</span> ?h <span style="color: #3e999f;">"* TODO [#A] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
-        (<span style="color: #3e999f;">"Code Review Medium"</span> ?m <span style="color: #3e999f;">"* TODO [#B] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
-        (<span style="color: #3e999f;">"Code Review Low"</span> ?l <span style="color: #3e999f;">"* TODO [#C] %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Issues"</span>)
-        (<span style="color: #3e999f;">"Code Review Question"</span> ?? <span style="color: #3e999f;">"* TODO %?\n  %i\n  %a"</span> <span style="color: #3e999f;">"~/Review.org"</span> <span style="color: #3e999f;">"Questions"</span>)))
+      '((<span style="color: #F6DC69;">"Code Review High"</span> ?h <span style="color: #F6DC69;">"* TODO [#A] %?\n  %i\n  %a"</span> <span style="color: #F6DC69;">"~/Review.org"</span> <span style="color: #F6DC69;">"Issues"</span>)
+        (<span style="color: #F6DC69;">"Code Review Medium"</span> ?m <span style="color: #F6DC69;">"* TODO [#B] %?\n  %i\n  %a"</span> <span style="color: #F6DC69;">"~/Review.org"</span> <span style="color: #F6DC69;">"Issues"</span>)
+        (<span style="color: #F6DC69;">"Code Review Low"</span> ?l <span style="color: #F6DC69;">"* TODO [#C] %?\n  %i\n  %a"</span> <span style="color: #F6DC69;">"~/Review.org"</span> <span style="color: #F6DC69;">"Issues"</span>)
+        (<span style="color: #F6DC69;">"Code Review Question"</span> ?? <span style="color: #F6DC69;">"* TODO %?\n  %i\n  %a"</span> <span style="color: #F6DC69;">"~/Review.org"</span> <span style="color: #F6DC69;">"Questions"</span>)))
 </pre>
 </div>
 
@@ -143,12 +143,12 @@ below to create the file search string from the line number.
 
 <div class="org-src-container">
 
-<pre class="src src-elisp">(<span style="color: #718c00;">defun</span> <span style="color: #f5871f;">my/linenum</span>()
-  <span style="color: #8959a8;">"Use line number as the file linking item"</span>
-<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">Optionally, predicate this technique to</span>
-<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">only certain modes</span>
-<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">e.g.</span>
-<span style="color: #8e908c; font-style: italic;">;; </span><span style="color: #8e908c; font-style: italic;">(when (eq major-mode 'cperl-mode) ...</span>
+<pre class="src src-elisp">(<span style="color: #D1FA71;">defun</span> <span style="color: #96D9F1;">my/linenum</span>()
+  <span style="color: #F6DC69;">"Use line number as the file linking item"</span>
+<span style="color: #8F8F8F; font-style: italic;">;; </span><span style="color: #8F8F8F; font-style: italic;">Optionally, predicate this technique to</span>
+<span style="color: #8F8F8F; font-style: italic;">;; </span><span style="color: #8F8F8F; font-style: italic;">only certain modes</span>
+<span style="color: #8F8F8F; font-style: italic;">;; </span><span style="color: #8F8F8F; font-style: italic;">e.g.</span>
+<span style="color: #8F8F8F; font-style: italic;">;; </span><span style="color: #8F8F8F; font-style: italic;">(when (eq major-mode 'cperl-mode) ...</span>
   (number-to-string (org-current-line)))
 (add-hook 'org-create-file-search-functions
           'my/linenum)
