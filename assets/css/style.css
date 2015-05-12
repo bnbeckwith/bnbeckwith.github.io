@@ -340,6 +340,10 @@ figcaption:hover {
     font-weight: 300;
 }
 
+blockquote p {
+	font-style: italic;
+}
+
 #blogmeta .published {
     position: relative;
     left: 0;
