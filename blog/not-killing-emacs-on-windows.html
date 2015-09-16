@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Not killing Emacs on Windows</title>
-<!-- 2015-05-12 Tue 11:45 -->
+<!-- 2015-09-16 Wed 15:43 -->
 <meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>Not killing Emacs on Windows</title>
 <meta  name="generator" content="Org-mode">
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
 <script type="text/javascript">
@@ -68,8 +69,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
+<header>
 <h1 class="title">Not killing Emacs on Windows</h1>
-<p>
+</header><p>
 On windows, many people use the built-in server and <code class="verbatim">emacsclientw</code> to
 make startup faster.  The basics for this are discussed <a href="http://emacs-fu.blogspot.com/2009/03/windows-and-daemons.html">here</a>.  I have
 a slightly modified version that closes a buffer opened through the
@@ -85,13 +87,13 @@ normal keystrokes.
 
 <div class="org-src-container">
 
-<pre class="src src-elisp">(<span style="color: #D1FA71;">defun</span> <span style="color: #96D9F1;">bnb/exit</span> ()
+<pre class="src src-elisp">(<span style="color: #8aa234; font-weight: bold;">defun</span> <span style="color: #a82e4d;">bnb/exit</span> ()
   (interactive)
-<span style="color: #8F8F8F; font-style: italic;">;  </span><span style="color: #8F8F8F; font-style: italic;">Check for a server-buffer before closing the server-buffer</span>
-  (<span style="color: #D1FA71;">if</span> server-clients
+<span style="color: #808080;">;  </span><span style="color: #808080;">Check for a server-buffer before closing the server-buffer</span>
+  (<span style="color: #8aa234; font-weight: bold;">if</span> server-clients
       (server-edit))
   (make-frame-invisible nil t))
-(global-set-key (kbd <span style="color: #F6DC69;">"C-x C-c"</span>) 'bnb/exit)
+(global-set-key (kbd <span style="color: #3450a2;">"C-x C-c"</span>) 'bnb/exit)
 </pre>
 </div>
 
@@ -108,14 +110,14 @@ need ever arises.
 
 <div class="org-src-container">
 
-<pre class="src src-elisp">(<span style="color: #D1FA71;">defvar</span> <span style="color: #96D9F1;">bnb/really-kill-emacs</span> nil)
-(<span style="color: #D1FA71;">defadvice</span> <span style="color: #96D9F1;">kill-emacs</span> (around bnb/really-exit activate)
-  <span style="color: #F6DC69;">"Only kill emacs if a prefix is set"</span>
-  (<span style="color: #D1FA71;">if</span> bnb/really-kill-emacs
+<pre class="src src-elisp">(<span style="color: #8aa234; font-weight: bold;">defvar</span> <span style="color: #f03f3f;">bnb/really-kill-emacs</span> nil)
+(<span style="color: #8aa234; font-weight: bold;">defadvice</span> <span style="color: #a82e4d;">kill-emacs</span> (around bnb/really-exit activate)
+  <span style="color: #708090;">"Only kill emacs if a prefix is set"</span>
+  (<span style="color: #8aa234; font-weight: bold;">if</span> bnb/really-kill-emacs
       ad-do-it)
     (bnb/exit))
 
-(<span style="color: #D1FA71;">defun</span> <span style="color: #96D9F1;">bnb/really-kill-emacs</span> ()
+(<span style="color: #8aa234; font-weight: bold;">defun</span> <span style="color: #a82e4d;">bnb/really-kill-emacs</span> ()
   (interactive)
   (setq bnb/really-kill-emacs t)
   (kill-emacs))

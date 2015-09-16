@@ -323,7 +323,11 @@ figure {
     position: relative;
 }
 
-figcaption {
+blockquote {
+    position: relative;
+}
+
+blockquote p, figcaption {
     margin-left: -12em;
     position: absolute;
     top: 0;
@@ -448,14 +452,15 @@ section ul.org-ul li:last-child:after {
 
 @media screen and (max-width: 63.236em) {
     body > * {
-        margin-left: .5rem;
-        margin-right: .5rem;
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
     }
+    
     li {
         margin-left: 1rem;
     }
     .org-src-container {
-        margin-left: .5rem;
+        margin-left: 0rem;
     }
 
     section ul.org-ul li {

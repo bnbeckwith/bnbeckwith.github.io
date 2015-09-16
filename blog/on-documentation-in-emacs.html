@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>On Documentation in Emacs</title>
-<!-- 2015-05-12 Tue 11:45 -->
+<!-- 2015-09-16 Wed 15:43 -->
 <meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>On Documentation in Emacs</title>
 <meta  name="generator" content="Org-mode">
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
 <script type="text/javascript">
@@ -68,11 +69,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
+<header>
 <h1 class="title">On Documentation in Emacs</h1>
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Built-in Documentation</h2>
-<div class="outline-text-2" id="text-1">
+</header>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Built-in Documentation</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 Emacs boasts built-in documentation.  What does it mean to be
 built-in?  In this case, the documentation is tightly coupled with
@@ -99,33 +101,33 @@ How does a user learn what is available?  For me, it is exploration.
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Starting a path</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Starting a path</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 Another engineer gave the following challenge: How to open a file
-into a new window (splitting) with <code class="verbatim">C-x C-f</code>.
+into a new window (splitting) with <code class="code">C-x C-f</code>.
 </p>
 
 <p>
 Immediately, I knew that I would have to check the full feature set
-of <code class="verbatim">find-file</code> (usually bound to <code class="verbatim">C-x C-f</code>).  Would there be an
-extra argument supplied by <code class="verbatim">C-u</code>? Or maybe a function wrapper was in
+of <code class="verbatim">find-file</code> (usually bound to <code class="code">C-x C-f</code>).  Would there be an
+extra argument supplied by <code class="code">C-u</code>? Or maybe a function wrapper was in
 order?  I was also excited about the possibility of sharing how
 functions can be <i>advised</i> to perform additional tasks.  Or maybe
 this is something that would fit into function hooks.
 </p>
 
 <p>
-What I knew for sure is that the path started with <code class="verbatim">C-x C-f</code>.  A
-quick trip to <code class="verbatim">C-h k</code> had be reading the right documentation
+What I knew for sure is that the path started with <code class="code">C-x C-f</code>.  A
+quick trip to <code class="code">C-h k</code> and I read the right documentation
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Taking a stroll</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Taking a stroll</h2>
+<div class="outline-text-2" id="text-orgheadline3">
 <p>
 Reading the documentation yielded nothing readily availble built
 into <code class="verbatim">find-file</code>.
@@ -148,7 +150,7 @@ implementation details.
 <p>
 Initially, I was looking to see how hard it would be to wrap
 find-files to split the window. I was then going to choose between
-writing a wrapper to rebind to <code class="verbatim">C-x C-f</code> or advising <code class="verbatim">find-files</code>.
+writing a wrapper to rebind to <code class="code">C-x C-f</code> or advising <code class="verbatim">find-files</code>.
 </p>
 
 <p>
@@ -163,9 +165,9 @@ the function I needed.
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Finding Bindings</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Finding Bindings</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 With my function in hand, all I had to do now was find any default
 bindings.  If none existed, then I would have some decisions to
@@ -173,8 +175,8 @@ make.
 </p>
 
 <p>
-Again using the built-in documentation via <code class="verbatim">C-h C-f</code>, I found that
-it was in fact already bound.  <code class="verbatim">C-x 4 C-f</code> or <code class="verbatim">C-x 4 f</code> will open a
+Again using the built-in documentation via <code class="code">C-h C-f</code>, I found that
+it was in fact already bound.  <code class="code">C-x 4 C-f</code> or <code class="code">C-x 4 f</code> will open a
 file in the other window splitting first if necessary.
 </p>
 
@@ -185,9 +187,9 @@ existing options.
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">Alternate paths</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">Alternate paths</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <p>
 I'm always interested if there is more on the topic.  Once I had my
 function name, the know-it-all Google provided me with additional
@@ -207,9 +209,9 @@ I also know it is in my included Emacs manual through <code class="verbatim">inf
 </div>
 </div>
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">Making a Map</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">Making a Map</h2>
+<div class="outline-text-2" id="text-orgheadline6">
 <p>
 This is positive story with a desired outcome. I wonder, though, how
 many new users would be able to do the same. I think they would find
